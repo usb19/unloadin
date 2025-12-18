@@ -1,132 +1,279 @@
 <!doctype html>
-
 <html lang="en">
-   
-   
-    <head>
+  <head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="robots" content="noodp">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+    <!-- PAGE TITLE -->
+    <title>Unloadin</title>
 
-        <!-- META -->
-        <meta charset="utf-8">
-        <meta name="robots" content="noodp">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="assets/img/favicon.png">
 
-        <!-- PAGE TITLE -->
-        <title>Unloadin - Coming Soon</title>
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&amp;subset=latin-ext" rel="stylesheet">
 
-        <!-- FAVICON -->
-        <link rel="shortcut icon" href="assets/img/favicon.png">
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/plugins.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 
-        <!-- FONTS -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&amp;subset=latin-ext" rel="stylesheet">
+    <!-- INLINE CSS (tabs + terms view) -->
+    <style>
+      .page-view { display: none; }
+      .page-view.active { display: block; }
 
-        <!-- STYLESHEETS -->
-        <link rel="stylesheet" type="text/css" href="assets/css/plugins.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+      .top-tabs{
+        position: absolute;
+        top: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 5;
+      }
 
+      .top-tab{
+        text-decoration: none;
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.18);
+        background: rgba(255,255,255,.06);
+        color: #fff;
+        font-size: 13px;
+        opacity: .9;
+      }
+      .top-tab.active{
+        background: rgba(255,255,255,.16);
+        opacity: 1;
+      }
 
-    </head>
+      .tnc-wrap{
+        width: min(980px, calc(100% - 24px));
+        margin: 90px auto 30px;
+        color: rgba(255,255,255,.92);
+      }
 
+      .tnc-title{
+        margin: 0 0 14px;
+        font-size: 22px;
+        font-weight: 600;
+      }
 
-    <body>
-    
-       
+      .tnc-card{
+        background: rgba(0,0,0,.35);
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 16px;
+        padding: 16px;
+        max-height: calc(100vh - 160px);
+        overflow: auto;
+        backdrop-filter: blur(8px);
+      }
 
+      .tnc-card h2{ margin: 0 0 10px; font-size: 16px; }
+      .tnc-card h3{ margin: 14px 0 8px; font-size: 14px; opacity: .95; }
+      .tnc-card h4{ margin: 12px 0 8px; font-size: 13px; opacity: .95; }
+      .tnc-card p, .tnc-card li{ font-size: 13px; line-height: 1.6; }
+      .tnc-card ul, .tnc-card ol{ padding-left: 18px; }
+      .tnc-muted{ opacity: .85; }
+    </style>
+  </head>
 
-        <!-- HERO -->
-        <div class="hero">
+  <body>
+    <!-- HERO -->
+    <div class="hero">
 
+      <!-- FRONT CONTENT -->
+      <div class="front-content">
 
-            <!-- FRONT CONTENT -->
-            <div class="front-content">
+        <!-- TOP TABS -->
+        <div class="top-tabs">
+          <a href="#home" class="top-tab active" data-view="homeView">Home</a>
+          <a href="#terms" class="top-tab" data-view="tncView">Terms &amp; Conditions</a>
+        </div>
 
+        <!-- HOME VIEW -->
+        <div id="homeView" class="page-view active">
 
-                <!-- CONTAINER MID -->
-                <div class="container-mid">
+          <!-- CONTAINER MID -->
+          <div class="container-mid">
 
+            <!-- ANIMATION CONTAINER -->
+            <!-- <div class="animation-container animation-fade-down" data-animation-delay="0">
+              <img style="max-width: 13%;" class="img-responsive logo" src="assets/img/logo.png" alt="Unloadin">
+            </div> -->
+            <!-- /ANIMATION CONTAINER -->
 
-                    <!-- ANIMATION CONTAINER -->
-                    <div class="animation-container animation-fade-down" data-animation-delay="0">
-                       
-                        <img style="max-width: 13%;" class="img-responsive logo" src="assets/img/logo.png" alt="Unloadin">
-                        
-                    </div>
-                    <!-- /ANIMATION CONTAINER -->
-                    
-                    
-                    <!-- ANIMATION CONTAINER -->
-                   <!--  <div class="animation-container animation-fade-right" data-animation-delay="100">
-                        
-                        <h1>Unloadin</h1>
-                        
-                    </div> -->
-                    <!-- /ANIMATION CONTAINER -->
-                    
-                    
-                    <!-- ANIMATION CONTAINER -->
-                    <div class="animation-container animation-fade-left" data-animation-delay="100"> 
-                       
-                        <p class="subline">Coming Soon!</p>
-                        
-                    </div>
-                    <!-- /ANIMATION CONTAINER -->
-                    
+            <!-- ANIMATION CONTAINER -->
+            <!-- <div class="animation-container animation-fade-left" data-animation-delay="100">
+              <p class="subline">Coming Soon!</p>
+            </div> -->
+            <!-- /ANIMATION CONTAINER -->
 
-                </div>
-                <!-- /CONTAINER MID -->
+          </div>
+          <!-- /CONTAINER MID -->
 
-
-                <!-- FOOTER -->
-                <div class="footer">
-                    
-
-                    <!-- ANIMATION CONTAINER -->
-                    <div class="animation-container animation-fade-up" data-animation-delay="1200">
-                        <p>
-                          <strong>Pricing:</strong> Services are offered <strong>only for domestic (India) trips</strong>.<br>
-                          All prices are <strong>quoted, accepted, and processed in Indian Rupees (INR) only</strong>.<br>
-                          Final pricing is shared at the time of booking based on trip details.<br>
-                          Applicable taxes, if any, will be communicated prior to payment.
-                        </p>
-                        <p>
-                          <strong>Legal Entity:</strong> UNLD TECH LABS PRIVATE LIMITED
-                        </p>
-                        <p>© 2025 All rights reserved <a href="https://unloadin.com">Unloadin</a></p>
-                        
-                    </div>
-                    <!-- /ANIMATION CONTAINER -->
-                    
-
-                </div>
-                <!-- /FOOTER -->
-
-
+          <!-- FOOTER -->
+          <div class="footer">
+            <div class="animation-container animation-fade-up" data-animation-delay="1200">
+              <p>
+                <strong>Pricing:</strong> Services are offered <strong>only for domestic (India) trips</strong>.<br>
+                All prices are <strong>quoted, accepted, and processed in Indian Rupees (INR) only</strong>.<br>
+                Final pricing is shared at the time of booking based on trip details.<br>
+                Applicable taxes, if any, will be communicated prior to payment.
+              </p>
+              <p><strong>Legal Entity:</strong> UNLD TECH LABS PRIVATE LIMITED</p>
+              <p>© 2025 All rights reserved <a href="https://unloadin.com">Unloadin</a></p>
             </div>
-            <!-- /FRONT CONTENT -->
-
-
-            <!-- BACKGROUND CONTENT -->
-            <div class="background-content">
-                <!-- <img class="img-responsive logo" src="assets/img/logo.png" alt="image"> -->
-
-               <div class="background-overlay"></div>
-                <div class="background-img layer" data-depth="0.05"></div> 
-                
-            </div>
-            <!-- /BACKGROUND CONTENT -->
-
+          </div>
+          <!-- /FOOTER -->
 
         </div>
-        <!-- /HERO -->
-        
-        
+        <!-- /HOME VIEW -->
 
-        <!-- JAVASCRIPTS -->
-        <script type="text/javascript" src="assets/js/plugins.js"></script>
-        <script type="text/javascript" src="assets/js/main.js"></script>
+        <!-- TERMS VIEW -->
+        <div id="tncView" class="page-view">
 
+          <div class="tnc-wrap">
+            <h1 class="tnc-title">Terms &amp; Conditions</h1>
 
-    </body> 
-    
-    
+            <div class="tnc-card">
+              <h2>UNLOADIN Customer Terms and Conditions</h2>
+              <p><strong>UNLD Tech Labs Private Limited (“UNLOADIN”)</strong> is engaged in the business of transportation of goods by road.</p>
+
+              <h3>General Terms and Conditions</h3>
+              <p>
+                Consignments entrusted to UNLOADIN by you (“Consignor/Sender/Customer”) for transportation shall be on agreed terms and conditions as specified in these Terms.
+              </p>
+              <p>
+                By accepting these terms, they become binding on you and UNLOADIN. If you do not agree, you should uninstall the UNLOADIN app and discontinue use of services.
+                Each time you send a consignment through UNLOADIN, you acknowledge these terms.
+              </p>
+              <p>
+                These terms apply to services including (i) Goods Transport by Road and (ii) Packers and Movers, and you will also be subject to service-specific terms depending on what you use.
+              </p>
+              <p>
+                You warrant you own or legally control the consignments and can contract for the services, and you agree to indemnify UNLOADIN for claims arising from lack of authority or breach.
+              </p>
+              <p>
+                UNLOADIN may amend these terms from time to time; continued use after changes is deemed acceptance. Services may be subject to applicable taxes/duties/fees, and you are responsible to comply with applicable tax laws and pay charges included in invoices.
+              </p>
+
+              <h3>Grievance Officer / Nodal Officer</h3>
+              <p class="tnc-muted">As per the Consumer Protection (E-Commerce) Rules, 2020:</p>
+              <ul>
+                <li><strong>Name:</strong> Shritheja Undar</li>
+                <li><strong>Company:</strong> UNLD Tech Labs Private Limited</li>
+                <li><strong>Address:</strong> A-34, GSJ Royale, Gopalpura Ward, Santhekatte, Udupi - 576105</li>
+                <li><strong>Email:</strong> admin@unloadin.com</li>
+                <li><strong>Phone:</strong> 9901331882</li>
+                <li><strong>Time:</strong> Monday to Friday (9:00 to 17:00)</li>
+              </ul>
+
+              <h3>Governing Law and Dispute Resolution</h3>
+              <p>
+                These terms are governed by Indian law; subject to the mediation clause, courts in Bangalore have exclusive jurisdiction.
+              </p>
+              <p>
+                Disputes not settled amicably within 30 days may be resolved by mediation under the Karnataka Civil Procedure (Mediation) Rules, 2005 before the Karnataka Mediation Centre, Bangalore, with a neutral mediator appointed by the Institution.
+                Mediation is confidential unless required by law.
+              </p>
+
+              <h3>Claims</h3>
+              <ul>
+                <li>Claims for accidents/negligence damage must be made in writing within 24 hours of receipt to admin@unloadin.com (for Goods Transport).</li>
+                <li>For damaged goods, share photos + description; if not claimed in time, UNLOADIN is not liable to process it.</li>
+                <li>Refund against damage requires identity verification of original Consignor/Customer.</li>
+                <li>For “Goods Transport by truck”, liability is limited to freight paid up to value of goods OR INR 5,000 (whichever is lower).</li>
+                <li>Insurance: customer may opt for additional coverage; for goods above INR 5,000 (3/4-wheeler transport), insurance is necessary at customer’s cost.</li>
+                <li>No time-bound commitment; arrival time is estimate; delays outside control — no liability for delay losses.</li>
+                <li>Refunds (eligible) processed within 7–10 working days after acceptance and complete documents.</li>
+                <li>Blocking access: UNLOADIN may block access for violations/misuse/security/fraud and may restore at its discretion.</li>
+                <li>Cash on delivery: full amount payable to delivery partner; non/deficit payment can lead to charges and recovery actions.</li>
+                <li>Cancellation after driver allocation may incur a fee per policy.</li>
+                <li>Invoice discrepancy must be raised within 7 days of completion.</li>
+              </ul>
+
+              <h3>Goods Transport by Road - Packaging Instructions</h3>
+              <ol>
+                <li>Cover goods completely and secure ends with tape.</li>
+                <li>Fragile items: bubble wrap corners/edges well.</li>
+                <li>Use stretch wrap for items that might shift.</li>
+                <li>Boxes: fill voids; cushion bottom for fragile items.</li>
+                <li>Seal using strong shipping tape; avoid string.</li>
+              </ol>
+              <p class="tnc-muted">
+                Sending fragile items is at Consignor’s risk; UNLOADIN is not liable for damage due to poor packaging by Consignor.
+              </p>
+
+              <h3>Registered Office</h3>
+              <p>
+                © 2025 UNLOADIN Pvt. Ltd. A-34, GSJ Royale, Gopalpura Ward, Santhekatte, Udupi – 576105, Karnataka
+              </p>
+              <p>
+                CIN: U70200KA2025PTC206956 | Email: admin@unloadin.com | Phone: 9901331882
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <!-- /TERMS VIEW -->
+
+      </div>
+      <!-- /FRONT CONTENT -->
+
+      <!-- BACKGROUND CONTENT -->
+      <div class="background-content">
+        <div class="background-overlay"></div>
+        <div class="background-img layer" data-depth="0.05"></div>
+      </div>
+      <!-- /BACKGROUND CONTENT -->
+
+    </div>
+    <!-- /HERO -->
+
+    <!-- JAVASCRIPTS -->
+    <script type="text/javascript" src="assets/js/plugins.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+
+    <!-- INLINE JS (view switch) -->
+    <script>
+      (function () {
+        const tabs = Array.from(document.querySelectorAll(".top-tab"));
+        const views = {
+          homeView: document.getElementById("homeView"),
+          tncView: document.getElementById("tncView"),
+        };
+
+        function show(viewId) {
+          Object.values(views).forEach(v => v && v.classList.remove("active"));
+          if (views[viewId]) views[viewId].classList.add("active");
+
+          tabs.forEach(t => t.classList.toggle("active", t.dataset.view === viewId));
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function routeFromHash() {
+          const h = (location.hash || "#home").toLowerCase();
+          if (h === "#terms" || h === "#tnc") show("tncView");
+          else show("homeView");
+        }
+
+        tabs.forEach(t => {
+          t.addEventListener("click", (e) => {
+            e.preventDefault();
+            const viewId = t.dataset.view;
+            location.hash = (viewId === "tncView") ? "#terms" : "#home";
+            show(viewId);
+          });
+        });
+
+        window.addEventListener("hashchange", routeFromHash);
+
+        // init
+        routeFromHash();
+      })();
+    </script>
+  </body>
 </html>

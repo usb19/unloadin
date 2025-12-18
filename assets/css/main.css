@@ -17,7 +17,6 @@
 
 
 
-
 /** 1. Basic
 *******************************************************************/
 
@@ -1020,3 +1019,60 @@ a:hover
         top: 0;
     }
 }
+
+/* two-view switch */
+.page-view { display: none; }
+.page-view.active { display: block; }
+
+.top-tabs{
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 5;
+}
+
+.top-tab{
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font-size: 13px;
+  opacity: .9;
+}
+.top-tab.active{
+  background: rgba(255,255,255,.16);
+  opacity: 1;
+}
+
+/* terms page styling */
+.tnc-wrap{
+  width: min(980px, calc(100% - 24px));
+  margin: 90px auto 30px;  /* pushes below the top tabs */
+  color: rgba(255,255,255,.92);
+}
+
+.tnc-title{
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.tnc-card{
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  padding: 16px;
+  max-height: calc(100vh - 160px);
+  overflow: auto;
+  backdrop-filter: blur(8px);
+}
+
+.tnc-card h2{ margin: 0 0 10px; font-size: 16px; }
+.tnc-card h3{ margin: 14px 0 8px; font-size: 14px; opacity: .95; }
+.tnc-card p, .tnc-card li{ font-size: 13px; line-height: 1.6; }
+.tnc-card ul{ padding-left: 18px; }

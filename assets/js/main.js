@@ -116,3 +116,29 @@ jQuery(document).ready(function($) {
     
     
 });
+
+(function () {
+  const tabs = Array.from(document.querySelectorAll(".top-tab"));
+  const views = {
+    homeView: document.getElementById("homeView"),
+    tncView: document.getElementById("tncView"),
+  };
+
+  function show(viewId) {
+    Object.values(views).forEach(v => v && v.classList.remove("active"));
+    if (views[viewId]) views[viewId].classList.add("active");
+
+    tabs.forEach(t => t.classList.toggle("active", t.dataset.view === viewId));
+  }
+
+  tabs.forEach(t => {
+    t.addEventListener("click", (e) => {
+      e.preventDefault();
+      show(t.dataset.view);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  // default
+  show("homeView");
+})();

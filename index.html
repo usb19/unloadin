@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <!-- PAGE TITLE -->
-    <title>Unloadin - Coming Soon</title>
+    <title>Unloadin</title>
 
     <!-- FAVICON -->
     <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/plugins.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 
-    <!-- INLINE CSS (tabs + terms view) -->
+    <!-- INLINE CSS (tabs + terms view + services cards) -->
     <style>
       .page-view { display: none; }
       .page-view.active { display: block; }
@@ -32,6 +32,9 @@
         display: flex;
         gap: 10px;
         z-index: 5;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 10px;
       }
 
       .top-tab{
@@ -43,6 +46,7 @@
         color: #fff;
         font-size: 13px;
         opacity: .9;
+        white-space: nowrap;
       }
       .top-tab.active{
         background: rgba(255,255,255,.16);
@@ -77,6 +81,76 @@
       .tnc-card p, .tnc-card li{ font-size: 13px; line-height: 1.6; }
       .tnc-card ul, .tnc-card ol{ padding-left: 18px; }
       .tnc-muted{ opacity: .85; }
+
+      /* SERVICES */
+      .svc-wrap{
+        width: min(980px, calc(100% - 24px));
+        margin: 90px auto 30px;
+        color: rgba(255,255,255,.92);
+      }
+      .svc-title{
+        margin: 0 0 14px;
+        font-size: 22px;
+        font-weight: 600;
+      }
+      .svc-grid{
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      @media (max-width: 900px){
+        .svc-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 560px){
+        .svc-grid{ grid-template-columns: 1fr; }
+      }
+      .svc-card{
+        background: rgba(0,0,0,.35);
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 16px;
+        overflow: hidden;
+        backdrop-filter: blur(8px);
+      }
+      .svc-img{
+        height: 210px;
+        width: 100%;
+        object-fit: cover;
+        display: block;
+        background: rgba(255,255,255,.06);
+        border-bottom: 1px solid rgba(255,255,255,.10);
+      }
+      .svc-img-fallback{
+        height: 170px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        opacity: .9;
+        background: rgba(255,255,255,.06);
+        border-bottom: 1px solid rgba(255,255,255,.10);
+      }
+      .svc-body{
+        padding: 14px;
+      }
+      .svc-name{
+        margin: 0 0 6px;
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .svc-desc{
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.6;
+        opacity: .92;
+      }
+      .svc-price{
+        margin: 0;
+        font-size: 13px;
+        opacity: .95;
+      }
+      .svc-price small{
+        opacity: .75;
+      }
     </style>
   </head>
 
@@ -90,6 +164,7 @@
         <!-- TOP TABS -->
         <div class="top-tabs">
           <a href="#home" class="top-tab active" data-view="homeView">Home</a>
+          <a href="#services" class="top-tab" data-view="servicesView">Services</a>
           <a href="#terms" class="top-tab" data-view="tncView">Terms &amp; Conditions</a>
         </div>
 
@@ -98,19 +173,7 @@
 
           <!-- CONTAINER MID -->
           <div class="container-mid">
-
-            <!-- ANIMATION CONTAINER -->
-            <!-- <div class="animation-container animation-fade-down" data-animation-delay="0">
-              <img style="max-width: 13%;" class="img-responsive logo" src="assets/img/logo.png" alt="Unloadin">
-            </div> -->
-            <!-- /ANIMATION CONTAINER -->
-
-            <!-- ANIMATION CONTAINER -->
-            <!-- <div class="animation-container animation-fade-left" data-animation-delay="100">
-              <p class="subline">Coming Soon!</p>
-            </div> -->
-            <!-- /ANIMATION CONTAINER -->
-
+            <!-- keep your existing home content here -->
           </div>
           <!-- /CONTAINER MID -->
 
@@ -131,6 +194,58 @@
 
         </div>
         <!-- /HOME VIEW -->
+
+        <!-- SERVICES VIEW -->
+        <div id="servicesView" class="page-view">
+          <div class="svc-wrap">
+            <h1 class="svc-title">Services</h1>
+
+            <div class="svc-grid">
+
+              <!-- CARD 1: Commercial Auto -->
+              <div class="svc-card">
+                <!-- Replace src with your real image path -->
+                <img class="svc-img" src="assets/img/auto.jpg" alt="Commercial Auto"
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.svc-img-fallback').style.display='flex';">
+                <div class="svc-img-fallback" style="display:none;">Image Placeholder (Commercial Auto)</div>
+
+                <div class="svc-body">
+                  <h3 class="svc-name">Commercial Auto</h3>
+                  <p class="svc-desc">Fast local movement for light loads and short trips.</p>
+                  <p class="svc-price"><strong>Starting at ₹ 19 / km</strong> <small>(INR*)</small></p>
+                </div>
+              </div>
+
+              <!-- CARD 2: LCV -->
+              <div class="svc-card">
+                <img class="svc-img" src="assets/img/lcv.jpg" alt="LCV Commercial Vehicle"
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.svc-img-fallback').style.display='flex';">
+                <div class="svc-img-fallback" style="display:none;">Image Placeholder (LCV)</div>
+
+                <div class="svc-body">
+                  <h3 class="svc-name">LCV Commercial Vehicle</h3>
+                  <p class="svc-desc">Great for medium loads, intra-city and nearby intercity deliveries.</p>
+                  <p class="svc-price"><strong>Starting at ₹ 39 / km</strong> <small>(INR*)</small></p>
+                </div>
+              </div>
+
+              <!-- CARD 3: Medium Commercial Vehicle -->
+              <div class="svc-card">
+                <img class="svc-img" src="assets/img/mcv.jpg" alt="Medium Commercial Vehicle"
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.svc-img-fallback').style.display='flex';">
+                <div class="svc-img-fallback" style="display:none;">Image Placeholder (Medium Commercial)</div>
+
+                <div class="svc-body">
+                  <h3 class="svc-name">Medium Commercial Vehicle</h3>
+                  <p class="svc-desc">For heavier loads and longer routes with higher carrying capacity.</p>
+                  <p class="svc-price"><strong>Starting at ₹ 59 / km</strong> <small>(INR*)</small></p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- /SERVICES VIEW -->
 
         <!-- TERMS VIEW -->
         <div id="tncView" class="page-view">
@@ -243,6 +358,7 @@
         const tabs = Array.from(document.querySelectorAll(".top-tab"));
         const views = {
           homeView: document.getElementById("homeView"),
+          servicesView: document.getElementById("servicesView"),
           tncView: document.getElementById("tncView"),
         };
 
@@ -257,6 +373,7 @@
         function routeFromHash() {
           const h = (location.hash || "#home").toLowerCase();
           if (h === "#terms" || h === "#tnc") show("tncView");
+          else if (h === "#services" || h === "#service") show("servicesView");
           else show("homeView");
         }
 
@@ -264,7 +381,11 @@
           t.addEventListener("click", (e) => {
             e.preventDefault();
             const viewId = t.dataset.view;
-            location.hash = (viewId === "tncView") ? "#terms" : "#home";
+
+            if (viewId === "tncView") location.hash = "#terms";
+            else if (viewId === "servicesView") location.hash = "#services";
+            else location.hash = "#home";
+
             show(viewId);
           });
         });

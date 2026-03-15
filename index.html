@@ -1,506 +1,386 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- META -->
     <meta charset="utf-8">
-    <meta name="robots" content="noodp">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-    <!-- PAGE TITLE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Unloadin</title>
-
-    <!-- FAVICON -->
-    <link rel="shortcut icon" href="assets/img/favicon.png">
-
-    <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&amp;subset=latin-ext" rel="stylesheet">
-
-    <!-- STYLESHEETS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/plugins.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-
-    <!-- INLINE CSS (tabs + terms view + services cards) -->
+    <link rel="shortcut icon" href="assets/img/unld_square.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;subset=latin-ext" rel="stylesheet">
     <style>
-      .page-view { display: none; }
-      .page-view.active { display: block; }
-
-      .top-tabs{
-        position: absolute;
-        top: 18px;
-        left: 50%;
-        transform: translateX(-50%);
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Roboto', sans-serif;
         display: flex;
-        gap: 10px;
-        z-index: 5;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 0 10px;
+        flex-direction: column;
       }
-
-      .top-tab{
-        text-decoration: none;
-        padding: 8px 14px;
-        border-radius: 999px;
-        border: 1px solid rgba(255,255,255,.18);
-        background: rgba(255,255,255,.06);
-        color: #fff;
-        font-size: 13px;
-        opacity: .9;
-        white-space: nowrap;
-      }
-      .top-tab.active{
-        background: rgba(255,255,255,.16);
-        opacity: 1;
-      }
-
-      .tnc-wrap{
-        width: min(980px, calc(100% - 24px));
-        margin: 90px auto 30px;
-        color: rgba(255,255,255,.92);
-      }
-
-      .tnc-title{
-        margin: 0 0 14px;
-        font-size: 22px;
-        font-weight: 600;
-      }
-
-      .tnc-card{
-        background: rgba(0,0,0,.35);
-        border: 1px solid rgba(255,255,255,.12);
-        border-radius: 16px;
-        padding: 16px;
-        max-height: calc(100vh - 160px);
-        overflow: auto;
-        backdrop-filter: blur(8px);
-      }
-
-      .tnc-card h2{ margin: 0 0 10px; font-size: 16px; }
-      .tnc-card h3{ margin: 14px 0 8px; font-size: 14px; opacity: .95; }
-      .tnc-card h4{ margin: 12px 0 8px; font-size: 13px; opacity: .95; }
-      .tnc-card p, .tnc-card li{ font-size: 13px; line-height: 1.6; }
-      .tnc-card ul, .tnc-card ol{ padding-left: 18px; }
-      .tnc-muted{ opacity: .85; }
-
-      /* SERVICES */
-      .svc-wrap{
-        width: min(980px, calc(100% - 24px));
-        margin: 90px auto 30px;
-        color: rgba(255,255,255,.92);
-      }
-      .svc-title{
-        margin: 0 0 14px;
-        font-size: 22px;
-        font-weight: 600;
-      }
-      .svc-grid{
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-      }
-      @media (max-width: 900px){
-        .svc-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      }
-      @media (max-width: 560px){
-        .svc-grid{ grid-template-columns: 1fr; }
-      }
-      .svc-card{
-        background: rgba(0,0,0,.35);
-        border: 1px solid rgba(255,255,255,.12);
-        border-radius: 16px;
-        overflow: hidden;
-        backdrop-filter: blur(8px);
-      }
-      .svc-img{
-        height: 210px;
-        width: 100%;
-        object-fit: cover;
+      .logo {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        z-index: 10;
+        height: auto;
+        width: 240px;
         display: block;
-        background: rgba(255,255,255,.06);
-        border-bottom: 1px solid rgba(255,255,255,.10);
       }
-      .svc-img-fallback{
-        height: 170px;
+      .top-buttons {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        z-index: 10;
+        display: flex;
+        gap: 12px;
+      }
+      .top-buttons a {
+        padding: 14px 28px;
+        border-radius: 999px;
+        border: 1px solid rgba(22,12,89,.5);
+        background: rgba(255,255,255,.25);
+        color: #160C59;
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none;
+        backdrop-filter: blur(6px);
+      }
+      .top-buttons a:hover {
+        background: rgba(255,255,255,.4);
+      }
+      .layer {
+        position: relative;
+        flex: 1;
+        min-height: 100vh;
         display: flex;
         align-items: center;
-        justify-content: center;
-        font-size: 13px;
-        opacity: .9;
-        background: rgba(255,255,255,.06);
-        border-bottom: 1px solid rgba(255,255,255,.10);
+        justify-content: space-between;
+        padding: 80px 5% 80px;
+        gap: 40px;
+        background: url(assets/img/img4.png) center/cover no-repeat;
       }
-      .svc-body{
-        padding: 14px;
+      .tagline {
+        flex: 1;
+        max-width: 720px;
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 700;
+        line-height: 1.2;
+        color: #160C59;
+        text-shadow: 0 1px 4px rgba(255,255,255,.5);
+        margin: 0 0 0 12%;
       }
-      .svc-name{
-        margin: 0 0 6px;
-        font-size: 15px;
-        font-weight: 600;
+      .tagline .brand {
+        display: block;
+        margin-top: 0.25em;
+        font-size: 1.35em;
       }
-      .svc-desc{
-        margin: 0 0 10px;
-        font-size: 13px;
-        line-height: 1.6;
-        opacity: .92;
+      .qr-block {
+        flex-shrink: 0;
+        text-align: center;
+        background: rgba(255,255,255,.95);
+        padding: 28px 32px;
+        border-radius: 16px;
+        box-shadow: 0 12px 40px rgba(0,0,0,.25);
+        margin-right: 8%;
       }
-      .svc-price{
-        margin: 0;
-        font-size: 13px;
+      .qr-block h2 {
+        margin: 0 0 20px;
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: #160C59;
+      }
+      .qr-block img {
+        display: block;
+        max-width: 400px;
+        width: 100%;
+        border-radius: 12px;
+      }
+      .footer {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        padding: 0 5%;
+      }
+      .footer .animation-container {
+        transition: transform .5s ease, opacity .5s ease;
+        transform: translateY(10vh);
+        opacity: 0;
+      }
+      .footer .animation-container.run-animation {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .footer p {
+        margin: 8px 0;
+        font-size: 1.3rem;
+        letter-spacing: .025em;
+        color: #160C59;
         opacity: .95;
       }
-      .svc-price small{
-        opacity: .75;
+      .footer a { color: #160C59; font-weight: bold; }
+      .footer-links { margin-bottom: 12px; }
+      .footer-links a { margin: 0 8px; }
+      .popup-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.5);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .popup-overlay.is-open { display: flex; }
+      .popup-box {
+        background: #fff;
+        border-radius: 12px;
+        max-width: 640px;
+        max-height: 85vh;
+        overflow: auto;
+        padding: 24px 28px;
+        color: #160C59;
+        box-shadow: 0 20px 60px rgba(0,0,0,.3);
+      }
+      .popup-box h1 { font-size: 1.5rem; margin: 0 0 16px; }
+      .popup-box h2 { font-size: 1.2rem; margin: 16px 0 8px; }
+      .popup-box h3 { font-size: 1.05rem; margin: 14px 0 6px; }
+      .popup-box p, .popup-box li { font-size: 0.95rem; line-height: 1.55; margin: 0 0 8px; }
+      .popup-box ul, .popup-box ol { padding-left: 20px; margin: 0 0 12px; }
+      .popup-box .tnc-muted { opacity: .85; }
+      @media (max-width: 768px) {
+        .logo { width: 180px; top: 16px; left: 16px; }
+        .top-buttons { top: 16px; right: 16px; gap: 8px; }
+        .top-buttons a { padding: 12px 20px; font-size: 16px; }
+        .layer {
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          padding-top: 140px;
+          padding-bottom: 200px;
+          min-height: 100vh;
+          gap: 32px;
+        }
+        .tagline {
+          margin: 0;
+          text-align: center;
+          order: 1;
+        }
+        .qr-block {
+          order: 2;
+          align-self: center;
+          margin-right: 0;
+        }
+        .footer {
+          position: absolute;
+          bottom: 10px;
+          left: 0;
+          right: 0;
+        }
+        .footer p { font-size: 1.1rem; }
       }
     </style>
   </head>
-
   <body>
-    <!-- HERO -->
-    <div class="hero">
-
-      <!-- FRONT CONTENT -->
-      <div class="front-content">
-
-        <!-- TOP TABS -->
-        <div class="top-tabs">
-          <a href="#home" class="top-tab active" data-view="homeView">Home</a>
-          <a href="#services" class="top-tab" data-view="servicesView">Services</a>
-          <a href="#terms" class="top-tab" data-view="tncView">Terms &amp; Conditions</a>
-          <a href="#data-deletion" class="top-tab" data-view="dataDeletionView">Data Deletion Policy</a>
-        </div>
-
-        <!-- HOME VIEW -->
-        <div id="homeView" class="page-view active">
-
-          <!-- CONTAINER MID -->
-          <div class="container-mid">
-            <!-- keep your existing home content here -->
-          </div>
-          <!-- /CONTAINER MID -->
-
-          <!-- FOOTER -->
-          <div class="footer">
-            <div class="animation-container animation-fade-up" data-animation-delay="1">
-              <p>
-                <strong>Pricing:</strong> Services are offered <strong>only for domestic (India) trips</strong>.<br>
-                All prices are <strong>quoted, accepted, and processed in Indian Rupees (INR) only</strong>.<br>
-                Final pricing is shared at the time of booking based on trip details.<br>
-                Applicable taxes, if any, will be communicated prior to payment.
-              </p>
-              <p><strong>Legal Entity:</strong> UNLD TECH LABS PRIVATE LIMITED</p>
-              <p>© 2025 All rights reserved <a href="https://unloadin.com">Unloadin</a></p>
-            </div>
-          </div>
-          <!-- /FOOTER -->
-
-        </div>
-        <!-- /HOME VIEW -->
-
-        <!-- SERVICES VIEW -->
-        <div id="servicesView" class="page-view">
-          <div class="svc-wrap">
-            <h1 class="svc-title">Services</h1>
-
-            <div class="svc-grid">
-
-              <!-- CARD 1: Commercial Auto -->
-              <div class="svc-card">
-                <!-- Replace src with your real image path -->
-                <img class="svc-img" src="assets/img/auto.jpg" alt="Commercial Auto"
-                     onerror="this.style.display='none'; this.parentElement.querySelector('.svc-img-fallback').style.display='flex';">
-                <div class="svc-img-fallback" style="display:none;">Image Placeholder (Commercial Auto)</div>
-
-                <div class="svc-body">
-                  <h3 class="svc-name">Commercial Auto</h3>
-                  <p class="svc-desc">Fast local movement for light loads and short trips.</p>
-                  <p class="svc-price"><strong>Starting at ₹ 19 / km</strong> <small>(INR*)</small></p>
-                </div>
-              </div>
-
-              <!-- CARD 2: LCV -->
-              <div class="svc-card">
-                <img class="svc-img" src="assets/img/lcv.jpg" alt="LCV Commercial Vehicle"
-                     onerror="this.style.display='none'; this.parentElement.querySelector('.svc-img-fallback').style.display='flex';">
-                <div class="svc-img-fallback" style="display:none;">Image Placeholder (LCV)</div>
-
-                <div class="svc-body">
-                  <h3 class="svc-name">LCV Commercial Vehicle</h3>
-                  <p class="svc-desc">Great for medium loads, intra-city and nearby intercity deliveries.</p>
-                  <p class="svc-price"><strong>Starting at ₹ 39 / km</strong> <small>(INR*)</small></p>
-                </div>
-              </div>
-
-              <!-- CARD 3: Medium Commercial Vehicle -->
-              <div class="svc-card">
-                <img class="svc-img" src="assets/img/mcv.jpg" alt="Medium Commercial Vehicle"
-                     onerror="this.style.display='none'; this.parentElement.querySelector('.svc-img-fallback').style.display='flex';">
-                <div class="svc-img-fallback" style="display:none;">Image Placeholder (Medium Commercial)</div>
-
-                <div class="svc-body">
-                  <h3 class="svc-name">Medium Commercial Vehicle</h3>
-                  <p class="svc-desc">For heavier loads and longer routes with higher carrying capacity.</p>
-                  <p class="svc-price"><strong>Starting at ₹ 59 / km</strong> <small>(INR*)</small></p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <!-- /SERVICES VIEW -->
-
-        <!-- TERMS VIEW -->
-        <div id="tncView" class="page-view">
-
-          <div class="tnc-wrap">
-            <h1 class="tnc-title">Terms &amp; Conditions</h1>
-
-            <div class="tnc-card">
-              <h2>UNLOADIN Customer Terms and Conditions</h2>
-              <p><strong>UNLD Tech Labs Private Limited (“UNLOADIN”)</strong> is engaged in the business of transportation of goods by road.</p>
-
-              <h3>General Terms and Conditions</h3>
-              <p>
-                Consignments entrusted to UNLOADIN by you (“Consignor/Sender/Customer”) for transportation shall be on agreed terms and conditions as specified in these Terms.
-              </p>
-              <p>
-                By accepting these terms, they become binding on you and UNLOADIN. If you do not agree, you should uninstall the UNLOADIN app and discontinue use of services.
-                Each time you send a consignment through UNLOADIN, you acknowledge these terms.
-              </p>
-              <p>
-                These terms apply to services including (i) Goods Transport by Road and (ii) Packers and Movers, and you will also be subject to service-specific terms depending on what you use.
-              </p>
-              <p>
-                You warrant you own or legally control the consignments and can contract for the services, and you agree to indemnify UNLOADIN for claims arising from lack of authority or breach.
-              </p>
-              <p>
-                UNLOADIN may amend these terms from time to time; continued use after changes is deemed acceptance. Services may be subject to applicable taxes/duties/fees, and you are responsible to comply with applicable tax laws and pay charges included in invoices.
-              </p>
-
-              <h3>Grievance Officer / Nodal Officer</h3>
-              <p class="tnc-muted">As per the Consumer Protection (E-Commerce) Rules, 2020:</p>
-              <ul>
-                <li><strong>Name:</strong> Shritheja Undar</li>
-                <li><strong>Company:</strong> UNLD Tech Labs Private Limited</li>
-                <li><strong>Address:</strong> A-34, GSJ Royale, Gopalpura Ward, Santhekatte, Udupi - 576105</li>
-                <li><strong>Email:</strong> admin@unloadin.com</li>
-                <li><strong>Phone:</strong> 9901331882</li>
-                <li><strong>Time:</strong> Monday to Friday (9:00 to 17:00)</li>
-              </ul>
-
-              <h3>Governing Law and Dispute Resolution</h3>
-              <p>
-                These terms are governed by Indian law; subject to the mediation clause, courts in Bangalore have exclusive jurisdiction.
-              </p>
-              <p>
-                Disputes not settled amicably within 30 days may be resolved by mediation under the Karnataka Civil Procedure (Mediation) Rules, 2005 before the Karnataka Mediation Centre, Bangalore, with a neutral mediator appointed by the Institution.
-                Mediation is confidential unless required by law.
-              </p>
-
-              <h3>Claims</h3>
-              <ul>
-                <li>Claims for accidents/negligence damage must be made in writing within 24 hours of receipt to admin@unloadin.com (for Goods Transport).</li>
-                <li>For damaged goods, share photos + description; if not claimed in time, UNLOADIN is not liable to process it.</li>
-                <li>Refund against damage requires identity verification of original Consignor/Customer.</li>
-                <li>For “Goods Transport by truck”, liability is limited to freight paid up to value of goods OR INR 5,000 (whichever is lower).</li>
-                <li>Insurance: customer may opt for additional coverage; for goods above INR 5,000 (3/4-wheeler transport), insurance is necessary at customer’s cost.</li>
-                <li>No time-bound commitment; arrival time is estimate; delays outside control — no liability for delay losses.</li>
-                <li>Refunds (eligible) processed within 7–10 working days after acceptance and complete documents.</li>
-                <li>Blocking access: UNLOADIN may block access for violations/misuse/security/fraud and may restore at its discretion.</li>
-                <li>Cash on delivery: full amount payable to delivery partner; non/deficit payment can lead to charges and recovery actions.</li>
-                <li>Cancellation after driver allocation may incur a fee per policy.</li>
-                <li>Invoice discrepancy must be raised within 7 days of completion.</li>
-              </ul>
-
-              <h3>Goods Transport by Road - Packaging Instructions</h3>
-              <ol>
-                <li>Cover goods completely and secure ends with tape.</li>
-                <li>Fragile items: bubble wrap corners/edges well.</li>
-                <li>Use stretch wrap for items that might shift.</li>
-                <li>Boxes: fill voids; cushion bottom for fragile items.</li>
-                <li>Seal using strong shipping tape; avoid string.</li>
-              </ol>
-              <p class="tnc-muted">
-                Sending fragile items is at Consignor’s risk; UNLOADIN is not liable for damage due to poor packaging by Consignor.
-              </p>
-
-              <h3>Registered Office</h3>
-              <p>
-                © 2025 UNLOADIN Pvt. Ltd. A-34, GSJ Royale, Gopalpura Ward, Santhekatte, Udupi – 576105, Karnataka
-              </p>
-              <p>
-                CIN: U70200KA2025PTC206956 | Email: admin@unloadin.com | Phone: 9901331882
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <!-- /TERMS VIEW -->
-
-        <!-- DATA DELETION POLICY VIEW -->
-        <div id="dataDeletionView" class="page-view">
-
-          <div class="tnc-wrap">
-            <h1 class="tnc-title">Data Deletion Policy</h1>
-
-            <div class="tnc-card">
-              <h2>UNLOADIN Data Deletion Policy</h2>
-              <p><strong>UNLD Tech Labs Private Limited ("UNLOADIN")</strong> respects your privacy and is committed to protecting your personal data. This Data Deletion Policy outlines how you can request deletion of your personal information from our systems.</p>
-
-              <h3>Your Right to Data Deletion</h3>
-              <p>
-                As a user of UNLOADIN services, you have the right to request deletion of your personal data that we have collected and stored. This includes data collected through our mobile application, website, and any other platforms we operate.
-              </p>
-
-              <h3>What Data Can Be Deleted</h3>
-              <p>Upon request, we can delete the following types of personal data:</p>
-              <ul>
-                <li>Account information (name, email, phone number)</li>
-                <li>Profile details and preferences</li>
-                <li>Booking and transaction history</li>
-                <li>Communication records</li>
-                <li>Location data</li>
-                <li>Device information</li>
-                <li>Any other personal data collected during your use of our services</li>
-              </ul>
-
-              <h3>Data Retention Requirements</h3>
-              <p>
-                Please note that certain data may need to be retained for legal, regulatory, or business purposes, including:
-              </p>
-              <ul>
-                <li>Financial records required for tax compliance and auditing (typically 7 years as per Indian law)</li>
-                <li>Transaction records required for dispute resolution and fraud prevention</li>
-                <li>Data required for pending legal proceedings or investigations</li>
-                <li>Information necessary to comply with Consumer Protection regulations</li>
-                <li>Records needed for outstanding payments or claims</li>
-              </ul>
-              <p class="tnc-muted">
-                Even after deletion, some anonymized or aggregated data may be retained for analytical purposes, which cannot be used to identify you personally.
-              </p>
-
-              <h3>How to Request Data Deletion</h3>
-              <p>To request deletion of your personal data, please follow these steps:</p>
-              <ol>
-                <li><strong>Email Request:</strong> Send an email to <strong>admin@unloadin.com</strong> with the subject line "Data Deletion Request"</li>
-                <li><strong>Provide Details:</strong> Include your registered phone number, email address, and any other details that can help us identify your account</li>
-                <li><strong>Verification:</strong> For security purposes, we may ask you to verify your identity before processing the deletion request</li>
-                <li><strong>Confirmation:</strong> Once verified, we will process your request within 30 days and send you a confirmation email</li>
-              </ol>
-
-              <h3>What Happens After Deletion</h3>
-              <p>Once your data deletion request is processed:</p>
-              <ul>
-                <li>Your account will be permanently deactivated</li>
-                <li>You will no longer be able to access UNLOADIN services using the deleted account</li>
-                <li>All personal data will be removed from our active systems</li>
-                <li>Backup copies will be deleted during our regular backup cleanup cycles (typically within 90 days)</li>
-                <li>Data retained for legal purposes will be securely isolated and not used for any operational purposes</li>
-              </ul>
-
-              <h3>Alternative: Account Deactivation</h3>
-              <p>
-                If you wish to temporarily stop using our services without permanently deleting your data, you can request account deactivation instead. This allows you to reactivate your account in the future. Contact us at <strong>admin@unloadin.com</strong> for this option.
-              </p>
-
-              <h3>Third-Party Data</h3>
-              <p>
-                If your data has been shared with third-party service providers (payment processors, logistics partners, etc.) as part of service delivery, we will request them to delete your data as well. However, their deletion timelines may be subject to their own policies and legal requirements.
-              </p>
-
-              <h3>Children's Data</h3>
-              <p>
-                UNLOADIN services are not intended for users under 18 years of age. If we become aware that we have collected data from a child under 18, we will take immediate steps to delete such information.
-              </p>
-
-              <h3>Contact Information</h3>
-              <p>For any questions or requests regarding data deletion, please contact:</p>
-              <ul>
-                <li><strong>Email:</strong> admin@unloadin.com</li>
-                <li><strong>Phone:</strong> 9901331882</li>
-                <li><strong>Address:</strong> A-34, GSJ Royale, Gopalpura Ward, Santhekatte, Udupi - 576105, Karnataka</li>
-                <li><strong>Business Hours:</strong> Monday to Friday (9:00 to 17:00)</li>
-              </ul>
-
-              <h3>Policy Updates</h3>
-              <p>
-                UNLOADIN reserves the right to update this Data Deletion Policy from time to time to comply with legal requirements or changes in our business practices. Any changes will be posted on our website and app.
-              </p>
-
-              <h3>Registered Office</h3>
-              <p>
-                © 2025 UNLOADIN Pvt. Ltd. A-34, GSJ Royale, Gopalpura Ward, Santhekatte, Udupi – 576105, Karnataka
-              </p>
-              <p>
-                CIN: U70200KA2025PTC206956 | Email: admin@unloadin.com | Phone: 9901331882
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <!-- /DATA DELETION POLICY VIEW -->
-
-      </div>
-      <!-- /FRONT CONTENT -->
-
-      <!-- BACKGROUND CONTENT -->
-      <div class="background-content">
-        <div class="background-overlay"></div>
-        <div class="background-img layer" data-depth="0.05"></div>
-      </div>
-      <!-- /BACKGROUND CONTENT -->
-
+    <img class="logo" src="assets/img/logo4.png" alt="Unloadin">
+    <div class="top-buttons">
+      <a href="index.html">Home</a>
+      <a href="partners.html">Partners</a>
     </div>
-    <!-- /HERO -->
+    <div class="layer">
+      <h1 class="tagline">Need hassle free, reliable logistics service?<span class="brand">UNLOADIN</span></h1>
+      <div class="qr-block">
+        <h2>Scan to Book</h2>
+        <a href="https://wa.me/918951504411?text=Hello" target="_blank" rel="noopener noreferrer">
+          <img src="assets/img/scan_to_book.jpeg" alt="Scan to Book QR Code">
+        </a>
+      </div>
+      <div class="footer">
+        <div class="animation-container" data-animation-delay="400">
+          <p class="footer-links"><a href="#" id="open-tnc">Terms of Service</a> | <a href="#" id="open-ddp">Data Deletion Policy</a></p>
+          <p><strong>Legal Entity:</strong> UNLD TECH LABS PRIVATE LIMITED</p>
+          <p>© 2025 All rights reserved <a href="https://unloadin.com">Unloadin</a></p>
+        </div>
+      </div>
+    </div>
 
-    <!-- JAVASCRIPTS -->
-    <script type="text/javascript" src="assets/js/plugins.js"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
+    <div class="popup-overlay" id="popup-tnc" aria-hidden="true">
+      <div class="popup-box" id="popup-tnc-box">
+        <h1>TERMS OF SERVICE</h1>
+        <h2>UNLOADIN Customer Terms and Conditions</h2>
+        <p>"UNLD Tech Labs Private Limited" or, "UNLOADIN" is a company which is, inter alia, engaged in the business of transportation of goods by road.</p>
+        <h3>General Terms and Conditions</h3>
+        <p><strong>1.</strong> Consignments entrusted to UNLD Tech Labs Private Limited (UNLOADIN) by you (hereinafter referred to as Consignor/Sender/Customer as the case may be) for the purposes of availing transportation services shall be on agreed terms and conditions as specified below.</p>
+        <p><strong>2.</strong> It is hereby clarified that Consignor/Sender/Customer shall mean, without limitation, any individual, proprietary concern, company, firm, association, organization etc. availing UNLOADIN's services. For the purpose of this terms and conditions, any Consignor/Sender/Customer availing UNLOADIN's Transportation of Goods by Road services for enterprises (UNLOADIN for Enterprise / PFE) and specifically registered with UNLOADIN for the same, having duly filled and submitted the enrolment form, shall be referred to as an Enterprise Customer.</p>
+        <p><strong>3.</strong> The Consignor/Sender/Customer (as the case may be) acknowledges that, by using the UNLOADIN mobile application (Application) and services (specified below), you have read and understood the UNLOADIN Customer Terms and Conditions (Terms and Conditions) and agree to be bound by these Terms and Conditions. If the Consignor/ Sender/ Customer opts not to agree to these Terms and Conditions or does not wish to avail the services provided by UNLOADIN, they should uninstall the Application from their mobile phones and discontinue the use of UNLOADIN's services. Each time that the Consignor/ Sender/ Customer uses UNLOADIN's services, the Consignor/ Sender/ Customer agrees to be bound by the Terms and Conditions.</p>
+        <p><strong>4.</strong> These Terms and Conditions apply to the services provided by UNLOADIN currently, including the following services: 4.1) Transportation of Goods by Road (transportation of goods by road); and 4.2) Packers and Movers (transportation of goods by road from one location to another including collection of household goods from pre-defined place, packaging of goods, transportation and unloading of the goods at the place of destination).</p>
+        <p><strong>5.</strong> In addition to the General Terms and Conditions, the Consignor/Sender/Customer (as the case may be) shall be subject to the specific terms and conditions of Transportation of Goods by Road and Packers &amp; Movers below, depending on the services availed by them.</p>
+        <p><strong>6.</strong> The Consignor/Sender/Customer acknowledges that certain services available on the Application are offered by UNLD Tech Labs Private Limited and/or third parties, including UNLOADIN's affiliates (Third Party Services). Should you wish to avail such Third Party Services, you shall be bound by the relevant terms and conditions of such Third Party Services (Third Party Terms and Conditions) which are in addition to these Terms and Conditions and your use of any Third Party Services shall be deemed to be your unconditional acceptance of the Third Party Terms and Conditions. Each of the Third Party Service Providers shall issue invoices directly to the Consignor/Sender/Customer for the respective Third Party Services, and UNLOADIN shall not be responsible for issuance of such invoices unless expressly agreed otherwise.</p>
+        <p><strong>7.</strong> UNLOADIN and/or its affiliates may, from time to time, introduce additional services which shall be governed by separate terms and conditions as may be made available from time to time on the Application or elsewhere. You may avail such new services upon accepting the relevant terms and conditions as may be applicable and any use of such additional services shall be deemed to be your acceptance of the relevant terms and conditions. Additionally, UNLOADIN and/or its affiliates reserve the right to modify, cancel, or discontinue any service(s), at its sole discretion, without any prior notice.</p>
+        <p><strong>8.</strong> You accept and agree that UNLOADIN has been appointed as the collection agent of UNLD Tech Labs Pvt Ltd for collection and recovery of amounts due to UNLD Tech Labs Pvt Ltd. Should you avail any services offered by UNLD Tech Labs Pvt Ltd, UNLOADIN may recover amounts due to UNLD Tech Labs Pvt Ltd as its designated collection agent and you hereby accept and agree to such collection of amounts by UNLOADIN on behalf of UNLD Tech Labs Pvt Ltd.</p>
+        <p><strong>9.</strong> The Consignor or Sender or Customer (as the case may be) warrants and undertakes that all Consignments in respect of which UNLOADIN is to provide its services are either owned by the Consignor or Sender or Customer (as the case may be) or legally in their possession or under their control, and that the Consignor or Sender or Customer (as the case may be) is able to deal with the Consignments as contemplated herein. The Consignor or Sender or Customer (as the case may be) agrees to indemnify UNLOADIN against any loss, damage or claim made against UNLOADIN arising from any lack of authority of the Consignor or Sender or Customer (as the case may be) to contract with UNLOADIN for the Services, or any breach of the warranty or undertaking given by the Consignor or Sender or Customer (as the case may be) under this paragraph.</p>
+        <p>UNLOADIN may vary or amend or change or update these Terms and Conditions, from time to time entirely at its own discretion. You shall be responsible for checking these Terms and Conditions from time to time and ensure continued compliance with the terms and conditions. The continued use of UNLOADIN's services by the Consignor or Sender or Customer (as the case may be), after any such amendment or change in the Terms and Conditions shall be deemed as your express acceptance to such amended/changed terms and you also agree to be bound by such changed/amended Terms and Conditions. You agree that UNLOADIN's services are subject to all prevailing statutory taxes, duties, fees, charges and/or costs, however denominated, as may be applicable from time to time. It shall be your responsibility to ensure that you comply with applicable laws, including, without limitation, on payment of taxes and pay the prevailing charges and duties which shall form part of the invoice raised by UNLOADIN.</p>
+        <h3>Grievance Officer / Nodal Officer</h3>
+        <p><strong>10.</strong> In accordance with the Consumer Protection (E-Commerce) Rules, 2020, the details of the Grievance Officer/ Nodal Officer are as below:</p>
+        <p>Shritheja<br>UNLD Tech Labs Private Limited<br>No. 34, GSJ Royal, Gopalpura Ward<br>Santhekatte, Udupi, KA 576105<br>Email ID: admin@unloadin.com<br>Phone No: 8951504411<br>Time: Monday to Friday (9:00 to 17:00)</p>
+        <h3>Governing Law and Dispute Resolution</h3>
+        <p><strong>11.</strong> These Terms and Conditions shall be governed by the laws of India and subject to the mediation clause specified hereunder, the courts in Bangalore shall have exclusive jurisdiction to deal with any matter pertaining to these Terms and Conditions. Any disputes between UNLOADIN and Consignor or Sender or Customer (as the case may be) or anybody claiming through or on behalf of the Consignor/Sender/Customer (Disputing Parties) that cannot be settled amicably between the parties within a period of 30 (thirty) days from the date of the dispute may be resolved by mediation in accordance with the Karnataka Civil Procedure (Mediation) Rules, 2005 before the Karnataka Mediation Centre, Bangalore (Institution). A neutral mediator shall be appointed by the Institution to facilitate the mediation process. The Disputing Parties shall keep the mediation confidential and not disclose to any person, unless required to do so under applicable law.</p>
+        <h3>Claims (As applicable to 'Goods Transport by Road' and 'Packers and Movers' below)</h3>
+        <p><strong>12.</strong> Any claim (for accidents or negligence resulting in damage) in respect of the goods shall be made in writing within 24 (twenty four) hours from the date of receipt and sent to admin@unloadin.com for Transportation of Goods by Road services.</p>
+        <p><strong>13.</strong> In case of damaged goods, the Consignor/Customer (as the case may be) and / or consignee needs to share photos of the damaged goods, in case of Transportation of Goods by Road services, and damaged packaging, in case of Packers and Movers services, along with the description of the damage. In absence of any such claims, made within the period stipulated here, UNLOADIN shall not be liable to process the same.</p>
+        <p><strong>14.</strong> When claiming refund against damage, the Consignor/Customer must verify their identity as the original Consignor/Customer of the goods. UNLOADIN may ask for relevant information to validate the identity of the claimant in this case. In case the identity of the claimant cannot be validated by UNLOADIN, the refund request will not be processed.</p>
+        <p><strong>15.</strong> For 'Transportation of Goods by Road', UNLOADIN shall be liable for any loss or damage to the goods directly attributable to UNLOADIN or its agents only to the extent of ten times the freight amount paid or payable, provided the amount so calculated shall not exceed the value of the goods.</p>
+        <p><strong>16.</strong> The Consignor/Customer hereby undertakes and agrees that, should they so desire, they shall opt for additional coverage to secure the goods from point of origin to point of final destination at their own cost; provided, for any goods above the value of INR 1,500 (Rupees One Thousand Five Hundred in case of transportation of goods by two-wheeler and INR 5,000 (Rupees Five Thousand) for transportation of goods by three and four wheeler, the Consignor/Customer will necessarily obtain insurance coverage from point of origin to point of final destination at their own cost.</p>
+        <p><strong>17.</strong> UNLOADIN shall have the right, at its sole discretion, to engage third-party service providers for the performance of the entire / part of the Services. The same does not alter the contractual relationship between UNLOADIN and the customer. UNLOADIN shall remain responsible for ensuring that the services are performed in accordance with these Terms and Conditions.</p>
+        <p><strong>18.</strong> No commitment is made for time bound completion of service. Any time of arrival provided at booking / completion of Service is an estimate only and, there may be occasional delays for reasons outside UNLOADIN's control. UNLOADIN shall not be liable for any loss arising from such delays.</p>
+        <p><strong>19.</strong> The Customer shall specify the accurate details of the goods at the time of booking, including nature of goods, quantity, volume, specifications etc.</p>
+        <p><strong>20.</strong> Reverse liability: In the event of mis-declaration of the goods (including without limitation where the goods are already damaged or damage other goods while under carriage or are illegal goods/ consignment) the Consignor/Customer shall be liable for any damages related to such mis declared goods including consequential and third party damages.</p>
+        <p><strong>21.</strong> Void liability: In the event of mis-declaration of the goods, UNLOADIN shall not be liable for any claims on compensation or the logistics-related costs or charges or the declared value of goods nor statutory or legal responsibilities of such goods.</p>
+        <p><strong>22.</strong> Under no circumstances will UNLOADIN or any of its directors, officers, employees, agents or contractors be liable to the Consignor/Customer or consignee for any indirect, incidental, consequential, special or exemplary losses or damages for insufficient provision of services, for any reason whatsoever. More particularly, UNLOADIN shall not be liable for any loss of income, profits, interests or other consequential losses.</p>
+        <p><strong>23.</strong> Refund Period: All eligible refunds shall be processed within 7 – 10 working days from the day the claim has been accepted by UNLOADIN upon submission of complete documents pertaining to the dispute by the Consignor/Customer, except where such refund cannot be processed due to reasons not attributable to UNLOADIN.</p>
+        <p><strong>24. Freight &amp; Invoicing</strong><br>The Freight, as determined by UNLOADIN, shall be displayed to the customer at the time of booking, and the customer's confirmation of the booking shall constitute acceptance of such freight. The Freight displayed and accepted at the time of booking is indicative, the final Freight shall be subject to variations based on factors such as actual distance travelled, duration of the trip, waiting time, and any other applicable charges, etc. The final Freight calculation will reflect these variations and will be communicated to the customer in the Application and on the Invoice upon the completion of service. UNLOADIN shall issue an invoice-cum-consignment note or bill of supply-cum-consignment note, as applicable, upon completion of the transportation Services. GST, where applicable, shall be payable by the consignor/customer under RCM for the transportation services. The consignor/consignee shall remain solely and absolutely liable for payment of such tax. Any other taxes, duties, levies or statutory charges applicable under law shall be solely borne and discharged by the consignor/consignee.</p>
+        <p><strong>25. Duties and Taxes</strong><br>UNLOADIN is a "goods transport agency" (GTA) under the Central Goods and Services Tax Act, 2017 (GST) and has opted for tax on reverse charge mechanism (RCM). Accordingly, in case the Consignor/Customer falls under the specified category, the Consignor/Customer is liable to obtain registration and pay the GST at the rate of 5% or the rate applicable under the Central Goods and Services Tax Act, as amended from time to time under RCM on the invoices raised by UNLOADIN. Where the Consignor/Customer is registered under the GST regulations, the same should be intimated to UNLOADIN through the Application. The Consignor shall be liable for the preparation and/or generation of the E-way bill and it shall be the sole responsibility of the Consignor to ensure that all the details provided in such E-way bill are true and/or accurate. UNLOADIN shall not be responsible for actions of the authorities due to misdeclaration.</p>
+        <p><strong>26.</strong> Notwithstanding any other remedy available to UNLOADIN, UNLOADIN shall have a lien over all goods/ consignments in its possession or under its control in respect of any sums due to UNLOADIN by the Consignor. UNLOADIN undertakes the responsibility to transport the goods safely in accordance with the agreed terms, subject to payment of consideration and compliance by the Consignor with these Terms and Conditions. If the consignee does not accept the consignment due to any reason, the Consignor shall still be liable to pay freight charges and all other dues and charges to UNLOADIN. In case the transportation of goods is not completed within 48 (forty eight) hours from the date of tendering the consignment for transportation, then demurrage / warehouse charges at such rates as may be fixed by UNLOADIN from time to time shall apply. If the consignment is not received or claimed within 7 days from the date of tendering, UNLOADIN shall have the right to proceed with the sale of the goods to realize all its dues.</p>
+        <p><strong>27.</strong> The Consignor/Customer maybe contacted by UNLOADIN for furnishing additional details required to process compensation towards loss or damage of the goods. UNLOADIN will not be liable for payment of any compensation if the details requested are not provided within 2 working days from the date on which the initial e-mail request is sent.</p>
+        <p><strong>28.</strong> Blocking of access: The Consignor/Customer acknowledges that UNLOADIN may deny its services, in whole or in part, at any time and for any reason, at UNLOADIN's sole discretion, without prior notice or liability. UNLOADIN may restore access at its sole discretion.</p>
+        <p><strong>29. Cash Payment Term:</strong> If Consignor/Customer has opted for cash payment option, the full amount must be paid to the driver partner as reflected on the Application at the time of completion of the services. In case of non payment/ deficit payment, UNLOADIN shall be entitled to levy additional charges, adjust/deduct amounts in the UNLOADIN Wallet, suspend the customer's account or take legal actions.</p>
+        <p><strong>30. Cancellation:</strong> All cancellations made after transport vehicle allotment may incur a cancellation fee basis UNLOADIN's policies.</p>
+        <p><strong>31. Discrepancy in Invoice Value:</strong> Any discrepancy in invoice value should be brought to the attention of UNLOADIN within 7 days from completion of transaction.</p>
+        <h3>TRANSPORTATION OF GOODS BY ROAD - TERMS AND CONDITIONS</h3>
+        <p><strong>1.</strong> The following terms and conditions relate to the Transportation of Goods by Road services provided by UNLOADIN. Consignors availing these services agree to be bound by these terms and any other general or specific terms and conditions notified by UNLOADIN from time to time.</p>
+        <p><strong>2.</strong> Consignors should adhere to following packaging instructions: 2.1. Cover the goods completely, securing the ends with tape. 2.2. For fragile items, cover in bubble wrap ensuring corners and edges are well protected. 2.3. Use stretch wrap for items that might shift. 2.4. For items in a box, fill the void with crumpled paper; for fragile items, layer the bottom with cushioning material. 2.5. Use strong tape designed for shipping while sealing. 2.6. Avoid using string instead of tape.</p>
+        <p><strong>3.</strong> The Consignor understands that using UNLOADIN's services for sending fragile items is at Consignor's own risk. UNLOADIN shall not be liable for any damage caused to goods due to poor packaging by the Consignor.</p>
+        <p><strong>4.</strong> The Consignor warrants that they are the owner or the authorized agent of the owner of the goods transported and is authorised to accept these Terms and Conditions.</p>
+        <p><strong>5.</strong> The Consignor is required to fill out all accurate particulars of consignment and trip details into the Application while booking; these details constitute the 'Goods Forwarding Note'.</p>
+        <p><strong>6.</strong> UNLOADIN shall, upon receipt of the Goods Forwarding Note, issue a Goods Receipt/ Consignment Note to the Consignor before the commencement of the transportation.</p>
+        <p><strong>7.</strong> The Consignor shall be solely responsible for the goods transported, including the nature, type, condition, and legality of such goods. The Consignor warrants that the description of the consignment in the Application conforms accurately to the actual content and such consignment does not form part of the Restricted Items. If the consignment contains any such items, the Consignor agrees to take full responsibility and fully indemnify UNLOADIN and/or its agents.</p>
+        <p><strong>8.</strong> All consignments are on a "said-to-contain" basis. The Consignor shall make proper, true, fair, correct and factual declaration regarding description and value of the consignment.</p>
+        <p><strong>9.</strong> At the time of booking, the Consignor will be required to provide a declaration stating the value of the consignment and the description of materials and the same shall be binding on the Consignor.</p>
+        <p><strong>10.</strong> UNLOADIN will use the Consignor and consignee's information to update and inform them through SMS, push notifications, WhatsApp and/ or email regarding the status of the consignment and obtain feedback. UNLOADIN may use the Consignor's behavioral information for internal analysis and targeted marketing.</p>
+        <p><strong>11.</strong> Consignor agrees to indemnify and hold UNLOADIN and its agents harmless for any loss, damages, costs, expenses, penalties, fines, liabilities due to any acts or omissions, breach of applicable law and/ or customer/ third party claims attributable to the Consignor.</p>
+        <p><strong>12.</strong> The Consignor shall not book any consignment containing Restricted Items including but not limited to: <strong>Pornographic Materials</strong>, <strong>Dry Ice</strong>, <strong>Human Body Parts</strong>, <strong>Explosives</strong>, <strong>Fire Arms</strong>, <strong>Flammables</strong>, <strong>Livestock</strong>, <strong>Pets &amp; Animals</strong>, <strong>Dangerous Goods</strong>, <strong>Hazardous Goods</strong>, <strong>Illegal Goods</strong>, <strong>Radioactive Materials</strong>, <strong>Precious Jewelleries</strong>, <strong>Currencies &amp; Coins</strong>, <strong>Stones and Gems</strong>, <strong>Gambling Devices</strong>, <strong>Lottery Tickets</strong>, <strong>Fire Extinguishers</strong>, <strong>Cigarettes &amp; Alcohol</strong>, <strong>Narcotics</strong> and <strong>Illegal Drugs</strong>. The list may be updated from time to time.</p>
+        <p><strong>13.</strong> Consignors will not hand over any secure documents/articles including education certificates, passport, Aadhar Cards, bank statements, credit/debit cards, cheques, currency, etc. (Restricted Documents/Articles). UNLOADIN is not licensed to carry Restricted Documents/Articles and shall have no liability in such cases.</p>
+        <p><strong>14.</strong> In the event the Consignor requests transportation by misrepresentation of any illegal or prohibited items, UNLOADIN or its agent have the right to report the same to the law enforcement authorities. UNLOADIN has a zero tolerance policy towards misuse of its services.</p>
+        <p><strong>15.</strong> Consignor is required to provide the accurate destination address(s) for all locations at the time of booking. For multi-stop feature, this includes every pickup and drop-off point.</p>
+        <p><strong>16.</strong> UNLOADIN reserves its right to refuse the booking of any consignment without assigning any reason.</p>
+        <p><strong>17.</strong> If during transit police or other law enforcement agencies demand display of the items for verification, the driver partner shall display the consignment to such authorities. The Consignor undertakes to indemnify UNLOADIN for any penalties/fines levied due to acts of the Consignor contrary to applicable laws.</p>
+        <p><strong>18.</strong> When loading the vehicle, the Consignor agrees not to exceed the weight and size details specified at the time of booking. UNLOADIN has the right to reject any goods which exceed the weight and size specified at the time of booking.</p>
+        <p><strong>19.</strong> The consignee should be available at the drop-off location at the time communicated. In the event the consignee is not available or refuses to accept the goods, the Consignor will be contacted. Consignments may be returned or disposed of as deemed practical by UNLOADIN. UNLOADIN reserves the right to levy demurrage/incidental charges for extended storage.</p>
+        <p><strong>20.</strong> Consignments cannot be dropped at PO boxes or postal codes. Consignments are transported to the consignee's address as provided. We do not provide door step services.</p>
+        <p><strong>21.</strong> If the Consignor opts for ancillary services such as loading-unloading ("Load Assist"), the Consignor will be charged additionally by including it in the freight.</p>
+        <p><strong>22.</strong> UNLOADIN may provide load assist services in some territories. If the Consignor avails such services, Consignor shall ensure that they or an authorised person shall be present at the time.</p>
+        <p><strong>23.</strong> If you choose Load Assist: Packaging, Assembly-Disassembly, Dismantling &amp; Rope Pulling are not included. Technical Assistance are not included. Goods heavier than 50 kg or that cannot be lifted by 2 persons cannot be moved using this service.</p>
+        <p><strong>24.</strong> UNLOADIN shall not be liable for any deficiency in the transportation services, including delay, non-fulfillment, loss or damage caused on account of act of God, force majeure, war, epidemics, pandemics, strikes, embargoes, riots, political disturbances, accidental fire, accident of vehicle, arrest, restraint or seizure under legal process, or any cause reasonably beyond the control of UNLOADIN.</p>
+        <p><strong>25.</strong> Directors, owners, partners and shareholders of UNLOADIN shall not be personally liable for any claims or liabilities arising out of service failures.</p>
+        <p><strong>26.</strong> Part Truck Load terms: In case of any deviation in charges, a revised quotation will be provided. Consignors shall ensure that the consignment shall not exceed a cumulative weight of 3,000 kg. Cancellation once the vehicle is allocated may incur a cancellation fee. UNLOADIN does not provide packaging services. The Consignor shall be required to clearly identify, label, and demarcate each item. UNLOADIN shall allocate the vehicle as deemed fit at its sole discretion. Payment shall be made by the Consignee directly to the driver partner upon completion. Any incorrect transportation or receipt of goods belonging to another person shall be informed to UNLOADIN within 48 hours of receipt.</p>
+        <p><strong>27.</strong> UNLOADIN for Enterprise: Enterprise Customers shall enroll by filling and submitting the enrolment form and register on the Application. Enterprise Customers shall provide names, mobile numbers and other details of personnel who may avail services on their behalf. UNLOADIN may allow certain Enterprise Customers to avail PFE services up to a mutually agreed amount with consolidated payment. All actions taken through the Enterprise Customer's account or using registered mobile numbers shall be deemed authorised by the Enterprise Customer. Enterprise Customers grant UNLOADIN a limited right to use their name, trademarks, logo for marketing and advertising. UNLOADIN may suspend the Enterprise Customer's account in case of failure to pay any fees. Enterprise Customers shall not assign or transfer any rights/obligations without prior written consent of UNLOADIN.</p>
+      </div>
+    </div>
 
-    <!-- INLINE JS (view switch) -->
+    <div class="popup-overlay" id="popup-ddp" aria-hidden="true">
+      <div class="popup-box" id="popup-ddp-box">
+        <h1>Data Deletion Policy</h1>
+        <h2>UNLOADIN Data Deletion Policy</h2>
+        <p><strong>UNLD Tech Labs Private Limited ("UNLOADIN")</strong> respects your privacy and is committed to protecting your personal data. This Data Deletion Policy outlines how you can request deletion of your personal information from our systems.</p>
+        <h3>Your Right to Data Deletion</h3>
+        <p>As a user of UNLOADIN services, you have the right to request deletion of your personal data that we have collected and stored. This includes data collected through our mobile application, website, and any other platforms we operate.</p>
+        <h3>What Data Can Be Deleted</h3>
+        <p>Upon request, we can delete the following types of personal data:</p>
+        <ul>
+          <li>Account information (name, email, phone number)</li>
+          <li>Profile details and preferences</li>
+          <li>Booking and transaction history</li>
+          <li>Communication records</li>
+          <li>Location data</li>
+          <li>Device information</li>
+          <li>Any other personal data collected during your use of our services</li>
+        </ul>
+        <h3>Data Retention Requirements</h3>
+        <p>Please note that certain data may need to be retained for legal, regulatory, or business purposes, including:</p>
+        <ul>
+          <li>Financial records required for tax compliance and auditing (typically 7 years as per Indian law)</li>
+          <li>Transaction records required for dispute resolution and fraud prevention</li>
+          <li>Data required for pending legal proceedings or investigations</li>
+          <li>Information necessary to comply with Consumer Protection regulations</li>
+          <li>Records needed for outstanding payments or claims</li>
+        </ul>
+        <p class="tnc-muted">Even after deletion, some anonymized or aggregated data may be retained for analytical purposes, which cannot be used to identify you personally.</p>
+        <h3>How to Request Data Deletion</h3>
+        <p>To request deletion of your personal data, please follow these steps:</p>
+        <ol>
+          <li><strong>Email Request:</strong> Send an email to <strong>admin@unloadin.com</strong> with the subject line "Data Deletion Request"</li>
+          <li><strong>Provide Details:</strong> Include your registered phone number, email address, and any other details that can help us identify your account</li>
+          <li><strong>Verification:</strong> For security purposes, we may ask you to verify your identity before processing the deletion request</li>
+          <li><strong>Confirmation:</strong> Once verified, we will process your request within 30 days and send you a confirmation email</li>
+        </ol>
+        <h3>What Happens After Deletion</h3>
+        <ul>
+          <li>Your account will be permanently deactivated</li>
+          <li>You will no longer be able to access UNLOADIN services using the deleted account</li>
+          <li>All personal data will be removed from our active systems</li>
+          <li>Backup copies will be deleted during our regular backup cleanup cycles (typically within 90 days)</li>
+          <li>Data retained for legal purposes will be securely isolated and not used for any operational purposes</li>
+        </ul>
+        <h3>Alternative: Account Deactivation</h3>
+        <p>If you wish to temporarily stop using our services without permanently deleting your data, you can request account deactivation instead. Contact us at <strong>admin@unloadin.com</strong> for this option.</p>
+        <h3>Third-Party Data</h3>
+        <p>If your data has been shared with third-party service providers, we will request them to delete your data as well. Their deletion timelines may be subject to their own policies.</p>
+        <h3>Children's Data</h3>
+        <p>UNLOADIN services are not intended for users under 18. If we become aware that we have collected data from a child under 18, we will take immediate steps to delete such information.</p>
+        <h3>Contact Information</h3>
+        <ul>
+          <li><strong>Email:</strong> admin@unloadin.com</li>
+          <li><strong>Phone:</strong> 9901331882</li>
+          <li><strong>Address:</strong> A-34, GSJ Royale, Gopalpura Ward, Santhekatte, Udupi - 576105, Karnataka</li>
+          <li><strong>Business Hours:</strong> Monday to Friday (9:00 to 17:00)</li>
+        </ul>
+        <h3>Registered Office</h3>
+        <p>© 2025 UNLOADIN Pvt. Ltd. A-34, GSJ Royale, Gopalpura Ward, Santhekatte, Udupi – 576105, Karnataka</p>
+        <p>CIN: U70200KA2025PTC206956 | Email: admin@unloadin.com | Phone: 9901331882</p>
+      </div>
+    </div>
+
     <script>
-      (function () {
-        const tabs = Array.from(document.querySelectorAll(".top-tab"));
-        const views = {
-          homeView: document.getElementById("homeView"),
-          servicesView: document.getElementById("servicesView"),
-          tncView: document.getElementById("tncView"),
-          dataDeletionView: document.getElementById("dataDeletionView"),
-        };
-
-        function show(viewId) {
-          Object.values(views).forEach(v => v && v.classList.remove("active"));
-          if (views[viewId]) views[viewId].classList.add("active");
-
-          tabs.forEach(t => t.classList.toggle("active", t.dataset.view === viewId));
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-
-        function routeFromHash() {
-          const h = (location.hash || "#home").toLowerCase();
-          if (h === "#terms" || h === "#tnc") show("tncView");
-          else if (h === "#services" || h === "#service") show("servicesView");
-          else if (h === "#data-deletion" || h === "#data-deletion-policy") show("dataDeletionView");
-          else show("homeView");
-        }
-
-        tabs.forEach(t => {
-          t.addEventListener("click", (e) => {
-            e.preventDefault();
-            const viewId = t.dataset.view;
-
-            if (viewId === "tncView") location.hash = "#terms";
-            else if (viewId === "servicesView") location.hash = "#services";
-            else if (viewId === "dataDeletionView") location.hash = "#data-deletion";
-            else location.hash = "#home";
-
-            show(viewId);
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.querySelectorAll('.footer .animation-container').forEach(function(el) {
+            var delay = parseInt(el.getAttribute('data-animation-delay'), 10) || 0;
+            setTimeout(function() {
+              el.classList.add('run-animation');
+            }, delay);
           });
+        }, 400);
+      });
+
+      (function() {
+        function openPopup(id) {
+          var el = document.getElementById(id);
+          if (el) {
+            el.classList.add('is-open');
+            el.setAttribute('aria-hidden', 'false');
+          }
+        }
+        function closePopup(id) {
+          var el = document.getElementById(id);
+          if (el) {
+            el.classList.remove('is-open');
+            el.setAttribute('aria-hidden', 'true');
+          }
+        }
+        document.getElementById('open-tnc').addEventListener('click', function(e) {
+          e.preventDefault();
+          openPopup('popup-tnc');
         });
-
-        window.addEventListener("hashchange", routeFromHash);
-
-        // init
-        routeFromHash();
+        document.getElementById('open-ddp').addEventListener('click', function(e) {
+          e.preventDefault();
+          openPopup('popup-ddp');
+        });
+        document.getElementById('popup-tnc').addEventListener('click', function(e) {
+          if (e.target === this) closePopup('popup-tnc');
+        });
+        document.getElementById('popup-ddp').addEventListener('click', function(e) {
+          if (e.target === this) closePopup('popup-ddp');
+        });
       })();
     </script>
   </body>

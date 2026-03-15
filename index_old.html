@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="robots" content="noodp">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- PAGE TITLE -->
+    <title>Unloadin</title>
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="assets/img/unld_square.png">
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&amp;subset=latin-ext" rel="stylesheet">
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/plugins.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+    <!-- INLINE CSS (tabs + terms view + services cards) -->
+    <style>
+      .page-view { display: none; }
+      .page-view.active { display: block; }
+
+      .top-tabs{
+        position: absolute;
+        top: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 5;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 10px;
+      }
+
+      .top-tab{
+        text-decoration: none;
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.18);
+        background: rgba(255,255,255,.06);
+        color: #fff;
+        font-size: 13px;
+        opacity: .9;
+        white-space: nowrap;
+      }
+      .top-tab.active{
+        background: rgba(255,255,255,.16);
+        opacity: 1;
+      }
+
+      .tnc-wrap{
+        width: min(980px, calc(100% - 24px));
+        margin: 90px auto 30px;
+        color: rgba(255,255,255,.92);
+      }
+
+      .tnc-title{
+        margin: 0 0 14px;
+        font-size: 22px;
+        font-weight: 600;
+      }
+
+      .tnc-card{
+        background: rgba(0,0,0,.35);
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 16px;
+        padding: 16px;
+        max-height: calc(100vh - 160px);
+        overflow: auto;
+        backdrop-filter: blur(8px);
+      }
+
+      .tnc-card h2{ margin: 0 0 10px; font-size: 16px; }
+      .tnc-card h3{ margin: 14px 0 8px; font-size: 14px; opacity: .95; }
+      .tnc-card h4{ margin: 12px 0 8px; font-size: 13px; opacity: .95; }
+      .tnc-card p, .tnc-card li{ font-size: 13px; line-height: 1.6; }
+      .tnc-card ul, .tnc-card ol{ padding-left: 18px; }
+      .tnc-muted{ opacity: .85; }
+
+      /* SERVICES */
+      .svc-wrap{
+        width: min(980px, calc(100% - 24px));
+        margin: 90px auto 30px;
+        color: rgba(255,255,255,.92);
+      }
+      .svc-title{
+        margin: 0 0 14px;
+        font-size: 22px;
+        font-weight: 600;
+      }
+      .svc-grid{
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      @media (max-width: 900px){
+        .svc-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 560px){
+        .svc-grid{ grid-template-columns: 1fr; }
+      }
+      .svc-card{
+        background: rgba(0,0,0,.35);
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 16px;
+        overflow: hidden;
+        backdrop-filter: blur(8px);
+      }
+      .svc-img{
+        height: 210px;
+        width: 100%;
+        object-fit: cover;
+        display: block;
+        background: rgba(255,255,255,.06);
+        border-bottom: 1px solid rgba(255,255,255,.10);
+      }
+      .svc-img-fallback{
+        height: 170px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        opacity: .9;
+        background: rgba(255,255,255,.06);
+        border-bottom: 1px solid rgba(255,255,255,.10);
+      }
+      .svc-body{
+        padding: 14px;
+      }
+      .svc-name{
+        margin: 0 0 6px;
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .svc-desc{
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.6;
+        opacity: .92;
+      }
+      .svc-price{
+        margin: 0;
+        font-size: 13px;
+        opacity: .95;
+      }
+      .svc-price small{
+        opacity: .75;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HERO -->
+    <div class="hero">
+
+      <!-- FRONT CONTENT -->
+      <div class="front-content">
+
+        <!-- TOP TABS -->
+        <div class="top-tabs">
+          <a href="#home" class="top-tab active" data-view="homeView">Home</a>
+          <a href="#services" class="top-tab" data-view="servicesView">Services</a>
+          <a href="#terms" class="top-tab" data-view="tncView">Terms &amp; Conditions</a>
+          <a href="#data-deletion" class="top-tab" data-view="dataDeletionView">Data Deletion Policy</a>
+        </div>
+
+        <!-- HOME VIEW -->
+        <div id="homeView" class="page-view active">
+
+          <!-- CONTAINER MID -->
+          <div class="container-mid">
+            <!-- keep your existing home content here -->
+          </div>
+          <!-- /CONTAINER MID -->
+
+          <!-- FOOTER -->
+          <div class="footer">
+            <div class="animation-container animation-fade-up" data-animation-delay="1">
+              <p>
+                <strong>Pricing:</strong> Services are offered <strong>only for domestic (India) trips</strong>.<br>
+                All prices are <strong>quoted, accepted, and processed in Indian Rupees (INR) only</strong>.<br>
+                Final pricing is shared at the time of booking based on trip details.<br>
+                Applicable taxes, if any, will be communicated prior to payment.
+              </p>
+              <p><strong>Legal Entity:</strong> UNLD TECH LABS PRIVATE LIMITED</p>
+              <p>© 2025 All rights reserved <a href="https://unloadin.com">Unloadin</a></p>
+            </div>
+          </div>
+          <!-- /FOOTER -->
+
+        </div>
+        <!-- /HOME VIEW -->
+
+        <!-- SERVICES VIEW -->
+        <div id="servicesView" class="page-view">
+          <div class="svc-wrap">
+            <h1 class="svc-title">Services</h1>
+
+            <div class="svc-grid">
+
+              <!-- CARD 1: Commercial Auto -->
+              <div class="svc-card">
+                <!-- Replace src with your real image path -->
+                <img class="svc-img" src="assets/img/auto.jpg" alt="Commercial Auto"
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.svc-img-fallback').style.display='flex';">
+                <div class="svc-img-fallback" style="display:none;">Image Placeholder (Commercial Auto)</div>
+
+                <div class="svc-body">
+                  <h3 class="svc-name">Commercial Auto</h3>
+                  <p class="svc-desc">Fast local movement for light loads and short trips.</p>
+                  <p class="svc-price"><strong>Starting at ₹ 19 / km</strong> <small>(INR*)</small></p>
+                </div>
+              </div>
+
+              <!-- CARD 2: LCV -->
+              <div class="svc-card">
+                <img class="svc-img" src="assets/img/lcv.jpg" alt="LCV Commercial Vehicle"
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.svc-img-fallback').style.display='flex';">
+                <div class="svc-img-fallback" style="display:none;">Image Placeholder (LCV)</div>
+
+                <div class="svc-body">
+                  <h3 class="svc-name">LCV Commercial Vehicle</h3>
+                  <p class="svc-desc">Great for medium loads, intra-city and nearby intercity deliveries.</p>
+                  <p class="svc-price"><strong>Starting at ₹ 39 / km</strong> <small>(INR*)</small></p>
+                </div>
+              </div>
+
+              <!-- CARD 3: Medium Commercial Vehicle -->
+              <div class="svc-card">
+                <img class="svc-img" src="assets/img/mcv.jpg" alt="Medium Commercial Vehicle"
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.svc-img-fallback').style.display='flex';">
+                <div class="svc-img-fallback" style="display:none;">Image Placeholder (Medium Commercial)</div>
+
+                <div class="svc-body">
+                  <h3 class="svc-name">Medium Commercial Vehicle</h3>
+                  <p class="svc-desc">For heavier loads and longer routes with higher carrying capacity.</p>
+                  <p class="svc-price"><strong>Starting at ₹ 59 / km</strong> <small>(INR*)</small></p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- /SERVICES VIEW -->
+
+        <!-- TERMS VIEW -->
+        <div id="tncView" class="page-view">
+
+          <div class="tnc-wrap">
+            <h1 class="tnc-title">Terms &amp; Conditions</h1>
+
+            <div class="tnc-card">
+              <h2>UNLOADIN Customer Terms and Conditions</h2>
+              <p><strong>UNLD Tech Labs Private Limited (“UNLOADIN”)</strong> is engaged in the business of transportation of goods by road.</p>
+
+              <h3>General Terms and Conditions</h3>
+              <p>
+                Consignments entrusted to UNLOADIN by you (“Consignor/Sender/Customer”) for transportation shall be on agreed terms and conditions as specified in these Terms.
+              </p>
+              <p>
+                By accepting these terms, they become binding on you and UNLOADIN. If you do not agree, you should uninstall the UNLOADIN app and discontinue use of services.
+                Each time you send a consignment through UNLOADIN, you acknowledge these terms.
+              </p>
+              <p>
+                These terms apply to services including (i) Goods Transport by Road and (ii) Packers and Movers, and you will also be subject to service-specific terms depending on what you use.
+              </p>
+              <p>
+                You warrant you own or legally control the consignments and can contract for the services, and you agree to indemnify UNLOADIN for claims arising from lack of authority or breach.
+              </p>
+              <p>
+                UNLOADIN may amend these terms from time to time; continued use after changes is deemed acceptance. Services may be subject to applicable taxes/duties/fees, and you are responsible to comply with applicable tax laws and pay charges included in invoices.
+              </p>
+
+              <h3>Grievance Officer / Nodal Officer</h3>
+              <p class="tnc-muted">As per the Consumer Protection (E-Commerce) Rules, 2020:</p>
+              <ul>
+                <li><strong>Name:</strong> Shritheja Undar</li>
+                <li><strong>Company:</strong> UNLD Tech Labs Private Limited</li>
+                <li><strong>Address:</strong> A-34, GSJ Royale, Gopalpura Ward, Santhekatte, Udupi - 576105</li>
+                <li><strong>Email:</strong> admin@unloadin.com</li>
+                <li><strong>Phone:</strong> 9901331882</li>
+                <li><strong>Time:</strong> Monday to Friday (9:00 to 17:00)</li>
+              </ul>
+
+              <h3>Governing Law and Dispute Resolution</h3>
+              <p>
+                These terms are governed by Indian law; subject to the mediation clause, courts in Bangalore have exclusive jurisdiction.
+              </p>
+              <p>
+                Disputes not settled amicably within 30 days may be resolved by mediation under the Karnataka Civil Procedure (Mediation) Rules, 2005 before the Karnataka Mediation Centre, Bangalore, with a neutral mediator appointed by the Institution.
+                Mediation is confidential unless required by law.
+              </p>
+
+              <h3>Claims</h3>
+              <ul>
+                <li>Claims for accidents/negligence damage must be made in writing within 24 hours of receipt to admin@unloadin.com (for Goods Transport).</li>
+                <li>For damaged goods, share photos + description; if not claimed in time, UNLOADIN is not liable to process it.</li>
+                <li>Refund against damage requires identity verification of original Consignor/Customer.</li>
+                <li>For “Goods Transport by truck”, liability is limited to freight paid up to value of goods OR INR 5,000 (whichever is lower).</li>
+                <li>Insurance: customer may opt for additional coverage; for goods above INR 5,000 (3/4-wheeler transport), insurance is necessary at customer’s cost.</li>
+                <li>No time-bound commitment; arrival time is estimate; delays outside control — no liability for delay losses.</li>
+                <li>Refunds (eligible) processed within 7–10 working days after acceptance and complete documents.</li>
+                <li>Blocking access: UNLOADIN may block access for violations/misuse/security/fraud and may restore at its discretion.</li>
+                <li>Cash on delivery: full amount payable to delivery partner; non/deficit payment can lead to charges and recovery actions.</li>
+                <li>Cancellation after driver allocation may incur a fee per policy.</li>
+                <li>Invoice discrepancy must be raised within 7 days of completion.</li>
+              </ul>
+
+              <h3>Goods Transport by Road - Packaging Instructions</h3>
+              <ol>
+                <li>Cover goods completely and secure ends with tape.</li>
+                <li>Fragile items: bubble wrap corners/edges well.</li>
+                <li>Use stretch wrap for items that might shift.</li>
+                <li>Boxes: fill voids; cushion bottom for fragile items.</li>
+                <li>Seal using strong shipping tape; avoid string.</li>
+              </ol>
+              <p class="tnc-muted">
+                Sending fragile items is at Consignor’s risk; UNLOADIN is not liable for damage due to poor packaging by Consignor.
+              </p>
+
+              <h3>Registered Office</h3>
+              <p>
+                © 2025 UNLOADIN Pvt. Ltd. A-34, GSJ Royale, Gopalpura Ward, Santhekatte, Udupi – 576105, Karnataka
+              </p>
+              <p>
+                CIN: U70200KA2025PTC206956 | Email: admin@unloadin.com | Phone: 9901331882
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <!-- /TERMS VIEW -->
+
+        <!-- DATA DELETION POLICY VIEW -->
+        <div id="dataDeletionView" class="page-view">
+
+          <div class="tnc-wrap">
+            <h1 class="tnc-title">Data Deletion Policy</h1>
+
+            <div class="tnc-card">
+              <h2>UNLOADIN Data Deletion Policy</h2>
+              <p><strong>UNLD Tech Labs Private Limited ("UNLOADIN")</strong> respects your privacy and is committed to protecting your personal data. This Data Deletion Policy outlines how you can request deletion of your personal information from our systems.</p>
+
+              <h3>Your Right to Data Deletion</h3>
+              <p>
+                As a user of UNLOADIN services, you have the right to request deletion of your personal data that we have collected and stored. This includes data collected through our mobile application, website, and any other platforms we operate.
+              </p>
+
+              <h3>What Data Can Be Deleted</h3>
+              <p>Upon request, we can delete the following types of personal data:</p>
+              <ul>
+                <li>Account information (name, email, phone number)</li>
+                <li>Profile details and preferences</li>
+                <li>Booking and transaction history</li>
+                <li>Communication records</li>
+                <li>Location data</li>
+                <li>Device information</li>
+                <li>Any other personal data collected during your use of our services</li>
+              </ul>
+
+              <h3>Data Retention Requirements</h3>
+              <p>
+                Please note that certain data may need to be retained for legal, regulatory, or business purposes, including:
+              </p>
+              <ul>
+                <li>Financial records required for tax compliance and auditing (typically 7 years as per Indian law)</li>
+                <li>Transaction records required for dispute resolution and fraud prevention</li>
+                <li>Data required for pending legal proceedings or investigations</li>
+                <li>Information necessary to comply with Consumer Protection regulations</li>
+                <li>Records needed for outstanding payments or claims</li>
+              </ul>
+              <p class="tnc-muted">
+                Even after deletion, some anonymized or aggregated data may be retained for analytical purposes, which cannot be used to identify you personally.
+              </p>
+
+              <h3>How to Request Data Deletion</h3>
+              <p>To request deletion of your personal data, please follow these steps:</p>
+              <ol>
+                <li><strong>Email Request:</strong> Send an email to <strong>admin@unloadin.com</strong> with the subject line "Data Deletion Request"</li>
+                <li><strong>Provide Details:</strong> Include your registered phone number, email address, and any other details that can help us identify your account</li>
+                <li><strong>Verification:</strong> For security purposes, we may ask you to verify your identity before processing the deletion request</li>
+                <li><strong>Confirmation:</strong> Once verified, we will process your request within 30 days and send you a confirmation email</li>
+              </ol>
+
+              <h3>What Happens After Deletion</h3>
+              <p>Once your data deletion request is processed:</p>
+              <ul>
+                <li>Your account will be permanently deactivated</li>
+                <li>You will no longer be able to access UNLOADIN services using the deleted account</li>
+                <li>All personal data will be removed from our active systems</li>
+                <li>Backup copies will be deleted during our regular backup cleanup cycles (typically within 90 days)</li>
+                <li>Data retained for legal purposes will be securely isolated and not used for any operational purposes</li>
+              </ul>
+
+              <h3>Alternative: Account Deactivation</h3>
+              <p>
+                If you wish to temporarily stop using our services without permanently deleting your data, you can request account deactivation instead. This allows you to reactivate your account in the future. Contact us at <strong>admin@unloadin.com</strong> for this option.
+              </p>
+
+              <h3>Third-Party Data</h3>
+              <p>
+                If your data has been shared with third-party service providers (payment processors, logistics partners, etc.) as part of service delivery, we will request them to delete your data as well. However, their deletion timelines may be subject to their own policies and legal requirements.
+              </p>
+
+              <h3>Children's Data</h3>
+              <p>
+                UNLOADIN services are not intended for users under 18 years of age. If we become aware that we have collected data from a child under 18, we will take immediate steps to delete such information.
+              </p>
+
+              <h3>Contact Information</h3>
+              <p>For any questions or requests regarding data deletion, please contact:</p>
+              <ul>
+                <li><strong>Email:</strong> admin@unloadin.com</li>
+                <li><strong>Phone:</strong> 9901331882</li>
+                <li><strong>Address:</strong> A-34, GSJ Royale, Gopalpura Ward, Santhekatte, Udupi - 576105, Karnataka</li>
+                <li><strong>Business Hours:</strong> Monday to Friday (9:00 to 17:00)</li>
+              </ul>
+
+              <h3>Policy Updates</h3>
+              <p>
+                UNLOADIN reserves the right to update this Data Deletion Policy from time to time to comply with legal requirements or changes in our business practices. Any changes will be posted on our website and app.
+              </p>
+
+              <h3>Registered Office</h3>
+              <p>
+                © 2025 UNLOADIN Pvt. Ltd. A-34, GSJ Royale, Gopalpura Ward, Santhekatte, Udupi – 576105, Karnataka
+              </p>
+              <p>
+                CIN: U70200KA2025PTC206956 | Email: admin@unloadin.com | Phone: 9901331882
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <!-- /DATA DELETION POLICY VIEW -->
+
+      </div>
+      <!-- /FRONT CONTENT -->
+
+      <!-- BACKGROUND CONTENT -->
+      <div class="background-content">
+        <div class="background-overlay"></div>
+        <div class="background-img layer" data-depth="0.05"></div>
+      </div>
+      <!-- /BACKGROUND CONTENT -->
+
+    </div>
+    <!-- /HERO -->
+
+    <!-- JAVASCRIPTS -->
+    <script type="text/javascript" src="assets/js/plugins.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+
+    <!-- INLINE JS (view switch) -->
+    <script>
+      (function () {
+        const tabs = Array.from(document.querySelectorAll(".top-tab"));
+        const views = {
+          homeView: document.getElementById("homeView"),
+          servicesView: document.getElementById("servicesView"),
+          tncView: document.getElementById("tncView"),
+          dataDeletionView: document.getElementById("dataDeletionView"),
+        };
+
+        function show(viewId) {
+          Object.values(views).forEach(v => v && v.classList.remove("active"));
+          if (views[viewId]) views[viewId].classList.add("active");
+
+          tabs.forEach(t => t.classList.toggle("active", t.dataset.view === viewId));
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function routeFromHash() {
+          const h = (location.hash || "#home").toLowerCase();
+          if (h === "#terms" || h === "#tnc") show("tncView");
+          else if (h === "#services" || h === "#service") show("servicesView");
+          else if (h === "#data-deletion" || h === "#data-deletion-policy") show("dataDeletionView");
+          else show("homeView");
+        }
+
+        tabs.forEach(t => {
+          t.addEventListener("click", (e) => {
+            e.preventDefault();
+            const viewId = t.dataset.view;
+
+            if (viewId === "tncView") location.hash = "#terms";
+            else if (viewId === "servicesView") location.hash = "#services";
+            else if (viewId === "dataDeletionView") location.hash = "#data-deletion";
+            else location.hash = "#home";
+
+            show(viewId);
+          });
+        });
+
+        window.addEventListener("hashchange", routeFromHash);
+
+        // init
+        routeFromHash();
+      })();
+    </script>
+  </body>
+</html>

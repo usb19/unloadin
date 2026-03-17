@@ -201,7 +201,7 @@
       </div>
       <div class="footer">
         <div class="animation-container" data-animation-delay="400">
-          <p class="footer-links"><a href="#" id="open-tnc">Terms of Service</a> | <a href="#" id="open-ddp">Data Deletion Policy</a></p>
+          <p class="footer-links"><a href="#terms" id="open-tnc">Terms of Service</a> | <a href="#" id="open-ddp">Data Deletion Policy</a></p>
           <p><strong>Legal Entity:</strong> UNLD TECH LABS PRIVATE LIMITED</p>
           <p>Trademark Registration Number: 7459305</p>
           <p>© 2025 All rights reserved <a href="https://unloadin.com">UNLOADIN</a><small> ™</small></p>
@@ -372,8 +372,12 @@
             el.setAttribute('aria-hidden', 'true');
           }
         }
+        function openTermsFromHash() {
+          if (window.location.hash === '#terms') openPopup('popup-tnc');
+        }
         document.getElementById('open-tnc').addEventListener('click', function(e) {
           e.preventDefault();
+          window.location.hash = 'terms';
           openPopup('popup-tnc');
         });
         document.getElementById('open-ddp').addEventListener('click', function(e) {
@@ -381,11 +385,16 @@
           openPopup('popup-ddp');
         });
         document.getElementById('popup-tnc').addEventListener('click', function(e) {
-          if (e.target === this) closePopup('popup-tnc');
+          if (e.target === this) {
+            closePopup('popup-tnc');
+            if (window.location.hash === '#terms') history.replaceState(null, '', window.location.pathname + window.location.search);
+          }
         });
         document.getElementById('popup-ddp').addEventListener('click', function(e) {
           if (e.target === this) closePopup('popup-ddp');
         });
+        window.addEventListener('hashchange', openTermsFromHash);
+        openTermsFromHash();
       })();
     </script>
   </body>

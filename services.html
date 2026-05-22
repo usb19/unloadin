@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Services | Unloadin</title>
+    <link rel="shortcut icon" href="assets/img/unld_square.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;subset=latin-ext" rel="stylesheet">
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        flex-direction: column;
+      }
+      .logo {
+        position: absolute;
+        top: 24px;
+        left: 0;
+        z-index: 10;
+        height: auto;
+        width: 240px;
+        display: block;
+      }
+      .top-buttons {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        z-index: 10;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .top-buttons a {
+        padding: 14px 28px;
+        border-radius: 999px;
+        border: 1px solid rgba(22,12,89,.5);
+        background: rgba(255,255,255,.25);
+        color: #160C59;
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none;
+        backdrop-filter: blur(6px);
+      }
+      .top-buttons a:hover,
+      .top-buttons a.is-active {
+        background: rgba(255,255,255,.55);
+      }
+      .layer {
+        position: relative;
+        flex: 1;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 80px 5% 80px;
+        gap: 40px;
+        background: url(assets/img/img4.png) center/cover no-repeat;
+      }
+      .tagline {
+        flex: 1;
+        max-width: 720px;
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 700;
+        line-height: 1.2;
+        color: #160C59;
+        text-shadow: 0 1px 4px rgba(255,255,255,.5);
+        margin: 0 0 0 12%;
+      }
+      .tagline .brand {
+        display: block;
+        margin-top: 0.25em;
+        font-size: 1.35em;
+      }
+      .tagline .brand small {
+        font-size: 0.5em;
+        vertical-align: super;
+      }
+      .services-block {
+        flex-shrink: 0;
+        background: rgba(255,255,255,.95);
+        padding: 28px 32px;
+        border-radius: 16px;
+        box-shadow: 0 12px 40px rgba(0,0,0,.25);
+        margin-right: 8%;
+        max-width: 480px;
+        width: 100%;
+      }
+      .services-block h2 {
+        margin: 0 0 20px;
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #160C59;
+        text-align: center;
+        line-height: 1.35;
+        letter-spacing: .02em;
+      }
+      .fare-table {
+        width: 100%;
+        border-collapse: collapse;
+        color: #160C59;
+      }
+      .fare-table th,
+      .fare-table td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid rgba(22,12,89,.15);
+        font-size: 1.05rem;
+      }
+      .fare-table th {
+        font-weight: 700;
+        font-size: 1.1rem;
+        background: rgba(22,12,89,.06);
+      }
+      .fare-table th:last-child,
+      .fare-table td:last-child {
+        text-align: right;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+      .fare-table tr:last-child td {
+        border-bottom: none;
+      }
+      .fare-note {
+        margin: 16px 0 0;
+        font-size: 0.85rem;
+        color: #160C59;
+        opacity: .75;
+        text-align: right;
+      }
+      .footer {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        padding: 0 5%;
+      }
+      .footer .animation-container {
+        transition: transform .5s ease, opacity .5s ease;
+        transform: translateY(10vh);
+        opacity: 0;
+      }
+      .footer .animation-container.run-animation {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .footer p {
+        margin: 8px 0;
+        font-size: 1.3rem;
+        letter-spacing: .025em;
+        color: #160C59;
+        opacity: .95;
+      }
+      .footer a { color: #160C59; font-weight: bold; }
+      .footer-links { margin-bottom: 12px; }
+      .footer-links a { margin: 0 8px; }
+      @media (max-width: 768px) {
+        .logo { width: 180px; top: 16px; left: 0; }
+        .top-buttons { top: 16px; right: 16px; gap: 8px; }
+        .top-buttons a { padding: 12px 20px; font-size: 16px; }
+        .layer {
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          padding-top: 140px;
+          padding-bottom: 200px;
+          min-height: 100vh;
+          gap: 32px;
+        }
+        .tagline {
+          margin: 0;
+          text-align: center;
+          order: 1;
+        }
+        .services-block {
+          order: 2;
+          align-self: center;
+          margin-right: 0;
+        }
+        .footer {
+          position: absolute;
+          bottom: 10px;
+          left: 0;
+          right: 0;
+        }
+        .footer p { font-size: 1.1rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <img class="logo" src="assets/img/logo4.png" alt="Unloadin">
+    <div class="top-buttons">
+      <a href="index.html">Home</a>
+      <a href="partners.html">Partners</a>
+      <a href="services.html" class="is-active">Services</a>
+    </div>
+    <div class="layer">
+      <h1 class="tagline">Hassle free logistics, every mile.<span class="brand">UNLOADIN<small>™</small></span></h1>
+      <div class="services-block">
+        <h2>We undertake intra and inter bookings</h2>
+        <table class="fare-table">
+          <thead>
+            <tr>
+              <th>Vehicles</th>
+              <th>Starting Fare</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Goods Auto</td><td>240 onwards*</td></tr>
+            <tr><td>Ace</td><td>280 onwards*</td></tr>
+            <tr><td>Bolero</td><td>380 onwards*</td></tr>
+            <tr><td>Bada Dost</td><td>480 onwards*</td></tr>
+            <tr><td>Tempo 407</td><td>1250 onwards*</td></tr>
+            <tr><td>Eicher 1049</td><td>2000 onwards*</td></tr>
+            <tr><td>Tata 709</td><td>2400 onwards*</td></tr>
+            <tr><td>Tata 909</td><td>2800 onwards*</td></tr>
+          </tbody>
+        </table>
+        <p class="fare-note">* Final fare may vary by distance, duration, and other charges.</p>
+      </div>
+      <div class="footer">
+        <div class="animation-container" data-animation-delay="400">
+          <p class="footer-links"><a href="index.html#terms">Terms of Service</a></p>
+          <p><strong>Legal Entity:</strong> UNLD TECH LABS PRIVATE LIMITED</p>
+          <p>Trademark Registration Number: 7459305</p>
+          <p>© 2025 All rights reserved <a href="https://unloadin.com">UNLOADIN</a><small> ™</small></p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.querySelectorAll('.footer .animation-container').forEach(function(el) {
+            var delay = parseInt(el.getAttribute('data-animation-delay'), 10) || 0;
+            setTimeout(function() {
+              el.classList.add('run-animation');
+            }, delay);
+          });
+        }, 400);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Us | Unloadin</title>
+    <link rel="shortcut icon" href="assets/img/unld_square.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;subset=latin-ext" rel="stylesheet">
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        flex-direction: column;
+        background: #fff url(assets/img/img_bg.jpg) center/cover no-repeat fixed;
+        color: #160C59;
+      }
+      .logo {
+        position: fixed;
+        top: 24px;
+        left: 0;
+        z-index: 10;
+        height: auto;
+        width: 240px;
+        display: block;
+      }
+      .top-buttons {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        z-index: 10;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .top-buttons a {
+        padding: 14px 28px;
+        border-radius: 999px;
+        border: 1px solid rgba(22,12,89,.5);
+        background: rgba(255,255,255,.9);
+        color: #160C59;
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .top-buttons a:hover,
+      .top-buttons a.is-active {
+        background: rgba(22,12,89,.08);
+      }
+      .page-main {
+        width: 100%;
+        max-width: none;
+        margin: 0 auto;
+        padding: clamp(180px, 20vh, 220px) 8% 48px max(8%, 260px);
+      }
+      .about-section h1,
+      .about-section h2 {
+        text-shadow: 0 1px 3px rgba(255,255,255,.85);
+      }
+      .about-section h1 {
+        margin: 0 0 16px;
+        font-size: 2.25rem;
+        font-weight: 700;
+      }
+      .about-section h2 {
+        margin: 0 0 12px;
+        font-size: 1.35rem;
+        font-weight: 700;
+      }
+      .about-section p,
+      .about-section li {
+        text-shadow: 0 1px 2px rgba(255,255,255,.75);
+      }
+      .about-section p {
+        margin: 0;
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+      .about-section ul {
+        margin: 0;
+        padding-left: 22px;
+        line-height: 1.7;
+      }
+      .about-section li {
+        margin-bottom: 10px;
+        font-size: 1.05rem;
+      }
+      .about-section li:last-child {
+        margin-bottom: 0;
+      }
+      .about-section li strong {
+        font-weight: 700;
+      }
+      .section-rule {
+        border: none;
+        border-top: 1px solid rgba(22,12,89,.22);
+        margin: 36px 0;
+      }
+      .footer {
+        width: 100%;
+        text-align: center;
+        padding: 24px 5% 32px;
+        border-top: 1px solid rgba(22,12,89,.12);
+        background: rgba(255,255,255,.92);
+      }
+      .footer .animation-container {
+        transition: transform .5s ease, opacity .5s ease;
+        transform: translateY(10vh);
+        opacity: 0;
+      }
+      .footer .animation-container.run-animation {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .footer p {
+        margin: 8px 0;
+        font-size: 1.1rem;
+        letter-spacing: .025em;
+        color: #160C59;
+        opacity: .95;
+      }
+      .footer a { color: #160C59; font-weight: bold; }
+      .footer-links { margin-bottom: 12px; }
+      .footer-links a { margin: 0 8px; }
+      @media (max-width: 768px) {
+        .logo { width: 180px; top: 16px; }
+        .top-buttons { top: 16px; right: 16px; gap: 8px; max-width: calc(100% - 200px); }
+        .top-buttons a { padding: 12px 20px; font-size: 16px; }
+        .page-main {
+          padding: clamp(200px, 32vh, 260px) 20px 40px;
+        }
+        .about-section h1 { font-size: 1.75rem; }
+        .section-rule { margin: 28px 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <img class="logo" src="assets/img/logo4.png" alt="Unloadin">
+    <div class="top-buttons">
+      <a href="index.html">Home</a>
+      <a href="partners.html">Partners</a>
+      <a href="services.html">Services</a>
+      <a href="about.html" class="is-active">About Us</a>
+    </div>
+
+    <main class="page-main">
+      <section class="about-section">
+        <h1>About Us</h1>
+        <p>At UNLOADIN, we believe logistics should be simple, transparent, and accessible for everyone. Founded with the vision of empowering micro and small enterprises in India, we bring together advanced AI-powered technology and human-centered design to transform the way businesses move goods.</p>
+      </section>
+
+      <hr class="section-rule" aria-hidden="true">
+
+      <section class="about-section">
+        <h2>What We Do</h2>
+        <ul>
+          <li>We aggregate drivers and vehicles into one seamless platform, ensuring customers always get the best market rate.</li>
+          <li>Our system intelligently matches demand with supply, optimizing routes, reducing costs, and saving valuable time.</li>
+          <li>By combining local insights with cutting-edge AI, we make logistics friendly and reliable—even for semi-tech-literate business owners.</li>
+        </ul>
+      </section>
+
+      <hr class="section-rule" aria-hidden="true">
+
+      <section class="about-section">
+        <h2>Why Choose Us</h2>
+        <ul>
+          <li><strong>Trust-driven operations:</strong> Transparent pricing and dependable service.</li>
+          <li><strong>Smart technology:</strong> AI agents that automate marketing, customer engagement, and operational workflows.</li>
+          <li><strong>Local connection:</strong> Campaigns and communication tailored in regional languages to resonate with communities.</li>
+          <li><strong>Scalable solutions:</strong> From small businesses to growing enterprises, our platform adapts to your needs.</li>
+        </ul>
+      </section>
+
+      <hr class="section-rule" aria-hidden="true">
+
+      <section class="about-section">
+        <h2>Our Mission</h2>
+        <p>To humanize logistics by blending technology with empathy—helping businesses save money, build trust, and grow sustainably.</p>
+      </section>
+
+      <hr class="section-rule" aria-hidden="true">
+
+      <section class="about-section">
+        <h2>Founding Team</h2>
+        <p><strong>Theja Undar</strong> brings a unique blend of technical expertise and operational excellence. With 5 years in aerospace product development and 6 years leading operations at Amazon US, Theja combines precision engineering with large-scale process management. Holding an MBA from the University of Notre Dame and a B.Tech in Mechanical Engineering from NITK Surathkal, Theja's vision is to humanize logistics by blending technology with empathy—helping businesses save money, build trust, and grow sustainably.</p>
+      </section>
+
+      <hr class="section-rule" aria-hidden="true">
+
+      <section class="about-section">
+        <h2>Our Team</h2>
+        <p>Behind UNLOADIN is a team of 10+ highly motivated individuals working across AI agent development, operations, and marketing. Together, we combine creativity, technical skill, and customer focus to deliver solutions that make logistics smarter, faster, and more human.</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="animation-container" data-animation-delay="400">
+        <p class="footer-links"><a href="index.html#terms">Terms of Service</a></p>
+        <p><strong>Legal Entity:</strong> UNLD TECH LABS PRIVATE LIMITED</p>
+        <p>Trademark Registration Number: 7459305</p>
+        <p>© 2025 All rights reserved <a href="https://unloadin.com">UNLOADIN</a><small> ™</small></p>
+      </div>
+    </footer>
+
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.querySelectorAll('.footer .animation-container').forEach(function(el) {
+            var delay = parseInt(el.getAttribute('data-animation-delay'), 10) || 0;
+            setTimeout(function() {
+              el.classList.add('run-animation');
+            }, delay);
+          });
+        }, 400);
+      });
+    </script>
+  </body>
+</html>
